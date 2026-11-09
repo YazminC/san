@@ -1,0 +1,32 @@
+{
+    "$schema": "https://www.schemastore.org/package.json",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "tsc --noEmit && vite build",
+        "typecheck": "tsc --noEmit",
+        "dev": "vite"
+    },
+    "devDependencies": {
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.2.1",
+        "concurrently": "^10.0.3",
+        "laravel-vite-plugin": "^3.1",
+        "typescript": "^7.0.2",
+        "vite": "^8.0.0"
+    },
+    "optionalDependencies": {
+        "@laravel/multiplex": "^0.4.1"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.14.0",
+        "@emotion/styled": "^11.14.1",
+        "@inertiajs/react": "^3.11.0",
+        "@inertiajs/vite": "^3.11.0",
+        "@mui/icons-material": "^9.5.0",
+        "@mui/material": "^9.5.0",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1"
+    }
+}

@@ -1,0 +1,1493 @@
+:root {
+    font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+    color: #453735;
+    background: #fff9f6;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-optical-sizing: auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+.invitation-page {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    overflow: hidden;
+    padding: 48px 0 32px;
+    background:
+        radial-gradient(ellipse at 12% 12%, rgba(244, 216, 206, 0.6), transparent 34%),
+        radial-gradient(ellipse at 91% 82%, rgba(238, 222, 209, 0.55), transparent 33%),
+        #fff9f6;
+}
+
+.page-shell {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.brand {
+    margin-bottom: 20px;
+    color: #a44f62;
+    letter-spacing: 0.025em;
+}
+
+.invitation-card.MuiCard-root {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(164, 79, 98, 0.09);
+    border-radius: 30px;
+    background: rgba(255, 254, 253, 0.94);
+    box-shadow: 0 22px 70px rgba(112, 67, 55, 0.11);
+}
+
+.progress-area {
+    padding: 24px 40px 0;
+}
+
+.progress-area .MuiLinearProgress-root {
+    height: 5px;
+    border-radius: 99px;
+    background: #f2e7e1;
+}
+
+.progress-area .MuiLinearProgress-bar {
+    border-radius: 99px;
+    background: linear-gradient(90deg, #c57882, #a44f62);
+    transition: transform 450ms ease;
+}
+
+.step-label {
+    display: block;
+    padding-top: 9px;
+    text-align: right;
+    color: #a48f87;
+}
+
+.card-content {
+    padding: clamp(28px, 6vw, 48px);
+}
+
+.step-content {
+    animation: arrive 300ms ease both;
+}
+
+.welcome-step {
+    padding: 10px 0;
+}
+
+.heart-illustration {
+    position: relative;
+    display: grid;
+    width: 114px;
+    height: 104px;
+    place-items: center;
+    margin-bottom: 2px;
+    border-radius: 50%;
+    background: #fbefeb;
+    color: #ba6977;
+}
+
+.heart-illustration span {
+    font-size: 58px;
+    line-height: 1;
+    transform: rotate(-8deg);
+}
+
+.heart-illustration i,
+.heart-illustration b {
+    position: absolute;
+    color: #d3a279;
+    font-size: 17px;
+    font-style: normal;
+}
+
+.heart-illustration i {
+    top: 14px;
+    right: 12px;
+}
+
+.heart-illustration b {
+    bottom: 17px;
+    left: 10px;
+    font-size: 12px;
+}
+
+.eyebrow-chip.MuiChip-root {
+    height: 31px;
+    color: #9c5e65;
+    background: #f9eeeb;
+    font-size: 0.78rem;
+}
+
+.eyebrow-chip .MuiChip-icon {
+    color: #ba6977;
+}
+
+.welcome-step h1 {
+    font-size: clamp(2.35rem, 8vw, 3.2rem);
+}
+
+.intro-copy {
+    max-width: 410px;
+    color: #806e69;
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+.primary-action.MuiButton-root {
+    min-height: 52px;
+    padding: 12px 30px;
+    border-radius: 99px;
+    box-shadow: 0 8px 18px rgba(164, 79, 98, 0.2);
+}
+
+.quiet-note {
+    color: #a48f87;
+    letter-spacing: 0.02em;
+}
+
+.step-kicker {
+    color: #a44f62;
+}
+
+.step-kicker .MuiSvgIcon-root {
+    font-size: 19px;
+}
+
+.step-kicker .MuiTypography-root {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+}
+
+.selection-chip.MuiChip-root {
+    align-self: flex-start;
+    color: #9c5e65;
+    background: #f9eeeb;
+}
+
+.selection-chip .MuiChip-icon {
+    color: #ba6977;
+}
+
+.choice-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.city-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.venue-grid {
+    grid-template-columns: 1fr;
+}
+
+.choice-card.MuiCard-root {
+    overflow: hidden;
+    border: 1px solid #eee3de;
+    border-radius: 18px;
+    background: #fff;
+    transition: border-color 180ms ease, background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.choice-card.MuiCard-root:hover {
+    transform: translateY(-2px);
+    border-color: #ddb2ae;
+    box-shadow: 0 8px 20px rgba(112, 67, 55, 0.07);
+}
+
+.choice-card.selected.MuiCard-root {
+    border: 1.5px solid #b66b78;
+    background: #fff7f5;
+    box-shadow: 0 0 0 3px rgba(182, 107, 120, 0.1);
+}
+
+.choice-action.MuiCardActionArea-root {
+    display: flex;
+    min-height: 143px;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+    text-align: left;
+}
+
+.choice-emoji {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    margin-bottom: 13px;
+    place-items: center;
+    border-radius: 12px;
+    background: #fbefeb;
+    font-size: 21px;
+}
+
+.choice-title.MuiTypography-root {
+    margin-bottom: 4px;
+    font-weight: 650;
+}
+
+.choice-card .MuiCardActionArea-focusHighlight {
+    background: rgba(164, 79, 98, 0.04);
+}
+
+.step-actions {
+    margin-top: 4px;
+}
+
+.step-actions .MuiButton-root {
+    min-height: 46px;
+    border-radius: 99px;
+}
+
+.page-footer {
+    margin-top: 22px;
+    color: #a48f87;
+}
+
+.page-footer .MuiSvgIcon-root {
+    color: #c17a82;
+    font-size: 13px;
+}
+
+.success-illustration {
+    width: 120px;
+    height: 110px;
+    background: #f8ece7;
+}
+
+.success-sparkle.MuiSvgIcon-root {
+    margin-bottom: -20px;
+    color: #d3a279;
+}
+
+.date-summary {
+    display: grid;
+    width: 100%;
+    gap: 18px;
+    margin: 8px 0;
+    padding: 22px;
+    border: 1px solid #f0e5df;
+    border-radius: 20px;
+    background: #fffbf9;
+}
+
+.summary-icon {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 13px;
+    background: #f9eeeb;
+    color: #a44f62;
+}
+
+.summary-value.MuiTypography-root {
+    font-weight: 600;
+}
+
+@keyframes arrive {
+    from {
+        opacity: 0;
+        transform: translateY(7px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 540px) {
+    .invitation-page {
+        align-items: flex-start;
+        padding: 28px 0 22px;
+    }
+
+    .brand {
+        margin-bottom: 14px;
+    }
+
+    .invitation-card.MuiCard-root {
+        border-radius: 24px;
+    }
+
+    .progress-area {
+        padding: 20px 24px 0;
+    }
+
+    .city-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .choice-action.MuiCardActionArea-root {
+        min-height: 122px;
+    }
+
+    .step-actions {
+        flex-wrap: wrap;
+    }
+
+    .step-actions .MuiButton-root {
+        font-size: 0.84rem;
+    }
+}
+
+@media print {
+    .invitation-page {
+        min-height: auto;
+        padding: 24px;
+        background: white;
+    }
+
+    .thank-you-card.MuiCard-root {
+        box-shadow: none;
+    }
+
+    .thank-you-card .MuiButton-root,
+    .page-footer {
+        display: none;
+    }
+}
+
+body,
+:root {
+    color: #372b27;
+    background: #101725;
+}
+
+.invitation-page {
+    isolation: isolate;
+    background:
+        radial-gradient(ellipse at 50% 12%, rgba(120, 139, 173, 0.17), transparent 34%),
+        radial-gradient(ellipse at 10% 88%, rgba(98, 57, 78, 0.24), transparent 40%),
+        radial-gradient(ellipse at 94% 82%, rgba(151, 118, 56, 0.13), transparent 35%),
+        radial-gradient(1px 1px at 8% 16%, #f5e1a3 99%, transparent),
+        radial-gradient(1px 1px at 21% 73%, #f5e1a3 99%, transparent),
+        radial-gradient(1px 1px at 37% 23%, #eef0ff 99%, transparent),
+        radial-gradient(1px 1px at 51% 88%, #f5e1a3 99%, transparent),
+        radial-gradient(1px 1px at 68% 12%, #eef0ff 99%, transparent),
+        radial-gradient(1px 1px at 79% 59%, #f5e1a3 99%, transparent),
+        radial-gradient(1px 1px at 94% 28%, #eef0ff 99%, transparent),
+        #101725;
+    background-size: auto, auto, auto, 217px 181px, 283px 219px, 337px 263px, 251px 197px,
+        307px 229px, 271px 241px, 349px 271px, auto;
+}
+
+.invitation-page::before,
+.invitation-page::after {
+    position: absolute;
+    z-index: -1;
+    color: rgba(235, 211, 147, 0.5);
+    content: "\2727";
+    pointer-events: none;
+}
+
+.invitation-page::before {
+    top: 10%;
+    left: max(5%, calc((100vw - 700px) / 2));
+    font-size: 30px;
+    animation: twinkle 4s ease-in-out infinite;
+}
+
+.invitation-page::after {
+    right: max(6%, calc((100vw - 690px) / 2));
+    bottom: 12%;
+    font-size: 22px;
+    animation: twinkle 5.2s ease-in-out infinite reverse;
+}
+
+.brand {
+    margin-bottom: 24px;
+    color: #e4c67f;
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.18em;
+    text-align: center;
+}
+
+.brand .MuiSvgIcon-root {
+    color: #eed79c;
+}
+
+.invitation-card.magic-frame.MuiCard-root {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #c8a960;
+    border-radius: 12px;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.82), transparent 65%),
+        repeating-linear-gradient(2deg, rgba(125, 97, 60, 0.015) 0 1px, transparent 1px 5px),
+        #f6efdf;
+    box-shadow:
+        0 28px 90px rgba(0, 0, 0, 0.34),
+        0 0 48px rgba(201, 168, 96, 0.09);
+}
+
+.invitation-card.magic-frame.MuiCard-root::before {
+    position: absolute;
+    z-index: 1;
+    border: 1px solid rgba(151, 118, 56, 0.28);
+    border-radius: 7px;
+    content: "";
+    inset: 9px;
+    pointer-events: none;
+}
+
+.invitation-card.magic-frame.MuiCard-root::after {
+    position: absolute;
+    top: 0;
+    right: 12%;
+    left: 12%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #e1c47b 24%, #a34f59 50%, #e1c47b 76%, transparent);
+    content: "";
+}
+
+.card-content {
+    padding: clamp(36px, 7vw, 55px);
+}
+
+.welcome-step {
+    position: relative;
+}
+
+.arcane-seal {
+    position: relative;
+    display: grid;
+    width: 110px;
+    height: 110px;
+    place-items: center;
+    margin: 3px 0 4px;
+    border: 1px solid rgba(151, 118, 56, 0.52);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, rgba(255, 253, 245, 0.98) 0 45%, transparent 46%),
+        #eee3c7;
+    color: #886b37;
+    box-shadow:
+        0 0 0 5px rgba(151, 118, 56, 0.08),
+        inset 0 0 0 5px rgba(151, 118, 56, 0.08);
+}
+
+.arcane-seal::before,
+.arcane-seal::after {
+    position: absolute;
+    border: 1px solid rgba(151, 118, 56, 0.45);
+    border-radius: 50%;
+    content: "";
+    inset: 8px;
+}
+
+.arcane-seal::after {
+    transform: rotate(45deg);
+    border-radius: 24px;
+}
+
+.arcane-seal > svg {
+    z-index: 1;
+    width: 47px;
+    height: 47px;
+    color: #946c36;
+    filter: drop-shadow(0 2px 6px rgba(157, 121, 51, 0.2));
+}
+
+.arcane-seal > span,
+.arcane-seal > i {
+    position: absolute;
+    z-index: 2;
+    color: #a64c50;
+    font-style: normal;
+}
+
+.arcane-seal > span {
+    top: 2px;
+    right: 8px;
+    font-size: 20px;
+}
+
+.arcane-seal > i {
+    bottom: 10px;
+    left: 9px;
+    font-size: 15px;
+}
+
+.eyebrow-chip.MuiChip-root,
+.selection-chip.MuiChip-root {
+    color: #735a36;
+    border: 1px solid rgba(151, 118, 56, 0.23);
+    background: #ede3cb;
+}
+
+.eyebrow-chip .MuiChip-icon,
+.selection-chip .MuiChip-icon {
+    color: #a17b3d;
+}
+
+.welcome-step h1 {
+    color: #382723;
+    line-height: 1.12;
+}
+
+.intro-copy,
+.invitation-card .MuiTypography-colorTextSecondary {
+    color: #76675a;
+}
+
+.welcome-step .intro-copy {
+    max-width: 390px;
+}
+
+.primary-action.MuiButton-root,
+.step-actions .MuiButton-contained {
+    color: #fffaf0;
+    border: 1px solid #8e4650;
+    background: linear-gradient(135deg, #85444d, #633340);
+    box-shadow: 0 6px 16px rgba(101, 48, 57, 0.2);
+}
+
+.primary-action.MuiButton-root:hover,
+.step-actions .MuiButton-contained:hover {
+    background: linear-gradient(135deg, #9b5960, #713846);
+    box-shadow: 0 8px 20px rgba(101, 48, 57, 0.25);
+}
+
+.quiet-note,
+.step-label {
+    color: #887354;
+}
+
+.step-kicker,
+.step-kicker .MuiSvgIcon-root {
+    color: #856538;
+}
+
+.step-kicker .MuiTypography-root {
+    letter-spacing: 0.12em;
+}
+
+.progress-area {
+    padding: 26px 42px 0;
+}
+
+.progress-area .MuiLinearProgress-root {
+    background: #e7dcc3;
+}
+
+.progress-area .MuiLinearProgress-bar {
+    background: linear-gradient(90deg, #b5924d, #90653a, #a55259);
+}
+
+.step-label {
+    letter-spacing: 0.025em;
+}
+
+.invitation-card .MuiOutlinedInput-root {
+    color: #45342d;
+    background: rgba(255, 253, 247, 0.75);
+}
+
+.invitation-card .MuiOutlinedInput-notchedOutline {
+    border-color: #d7c8aa;
+}
+
+.invitation-card .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #ad894d;
+}
+
+.invitation-card .MuiInputLabel-root,
+.invitation-card .MuiFormHelperText-root {
+    color: #82705d;
+}
+
+.choice-card.MuiCard-root {
+    border: 1px solid #ded0b2;
+    background: rgba(255, 253, 247, 0.78);
+}
+
+.choice-card.MuiCard-root:hover {
+    border-color: #af9157;
+    background: #fffaf0;
+    box-shadow: 0 8px 20px rgba(73, 52, 33, 0.1);
+}
+
+.choice-card.selected.MuiCard-root {
+    border: 1.5px solid #94703b;
+    background: #f3ead4;
+    box-shadow: 0 0 0 3px rgba(151, 118, 56, 0.12);
+}
+
+.choice-emoji {
+    border: 1px solid rgba(151, 118, 56, 0.17);
+    background: #eee5d0;
+}
+
+.choice-title.MuiTypography-root {
+    color: #44332b;
+}
+
+.choice-card .MuiCardActionArea-focusHighlight {
+    background: rgba(151, 118, 56, 0.06);
+}
+
+.step-actions .MuiButton-text {
+    color: #735f4a;
+}
+
+.step-actions .MuiButton-text:hover {
+    background: rgba(151, 118, 56, 0.08);
+}
+
+.page-footer {
+    color: #c9b991;
+    letter-spacing: 0.035em;
+}
+
+.page-footer .MuiSvgIcon-root,
+.success-sparkle.MuiSvgIcon-root {
+    color: #e4c67f;
+}
+
+.success-seal {
+    width: 116px;
+    height: 116px;
+}
+
+.date-summary {
+    gap: 18px;
+    border-color: #d9c9a8;
+    background: rgba(255, 252, 243, 0.8);
+}
+
+.summary-icon {
+    border: 1px solid rgba(151, 118, 56, 0.17);
+    background: #eee5d0;
+    color: #80613d;
+}
+
+.thank-you-card .intro-copy {
+    max-width: 390px;
+}
+
+@keyframes twinkle {
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.13);
+    }
+}
+
+@media (max-width: 540px) {
+    .invitation-page {
+        padding: 27px 0 23px;
+    }
+
+    .brand {
+        margin-bottom: 17px;
+        font-size: 0.65rem;
+        letter-spacing: 0.13em;
+    }
+
+    .invitation-card.magic-frame.MuiCard-root {
+        border-radius: 10px;
+    }
+
+    .invitation-card.magic-frame.MuiCard-root::before {
+        inset: 7px;
+    }
+
+    .progress-area {
+        padding: 23px 29px 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .invitation-page::before,
+    .invitation-page::after,
+    .step-content {
+        animation: none;
+    }
+}
+
+.invitation-card.invitation-cover.MuiCard-root {
+    overflow: hidden;
+    border-color: #b99251;
+    background: #101725;
+    box-shadow:
+        0 28px 90px rgba(0, 0, 0, 0.44),
+        0 0 50px rgba(201, 168, 96, 0.12);
+}
+
+.invitation-card.invitation-cover.MuiCard-root::before {
+    z-index: 3;
+    border-color: rgba(215, 186, 120, 0.48);
+    pointer-events: none;
+}
+
+.invitation-cover .card-content {
+    padding: 0;
+}
+
+.invitation-poster {
+    overflow: hidden;
+    background: #121b2a;
+}
+
+.poster-art {
+    position: relative;
+    min-height: 285px;
+    overflow: hidden;
+    background:
+        linear-gradient(180deg, transparent 62%, #121b2a 100%),
+        #18243a;
+}
+
+.castle-skyline {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.poster-art::after {
+    position: absolute;
+    inset: 54% 0 0;
+    background: linear-gradient(180deg, transparent, rgba(16, 23, 37, 0.32));
+    content: "";
+    pointer-events: none;
+}
+
+.banner-row {
+    position: absolute;
+    z-index: 1;
+    right: 7%;
+    bottom: 42px;
+    left: 7%;
+    display: flex;
+    height: 150px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: clamp(8px, 3vw, 22px);
+}
+
+.guild-banner {
+    position: relative;
+    display: grid;
+    width: clamp(51px, 14%, 77px);
+    height: 139px;
+    flex: 0 1 77px;
+    place-items: start center;
+    padding-top: 21px;
+    clip-path: polygon(0 0, 100% 0, 100% 76%, 50% 100%, 0 76%);
+    filter: drop-shadow(0 5px 9px rgba(0, 0, 0, 0.5));
+}
+
+.guild-banner::before {
+    position: absolute;
+    border: 1px solid rgba(238, 214, 159, 0.84);
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+    content: "";
+    inset: 4px;
+}
+
+.guild-banner::after {
+    position: absolute;
+    border: 1px solid rgba(238, 214, 159, 0.29);
+    clip-path: polygon(0 0, 100% 0, 100% 74%, 50% 100%, 0 74%);
+    content: "";
+    inset: 9px;
+}
+
+.guild-banner-ember {
+    background: linear-gradient(145deg, #792e39, #431d2b);
+}
+
+.guild-banner-grove {
+    background: linear-gradient(145deg, #285646, #16352f);
+}
+
+.guild-banner-sun {
+    background: linear-gradient(145deg, #bb8a3d, #725127);
+}
+
+.guild-banner-mist {
+    background: linear-gradient(145deg, #365777, #1d344e);
+}
+
+.banner-symbol {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 48px;
+    height: 58px;
+    place-items: center;
+    padding: 4px 2px;
+    border: 1px solid rgba(241, 220, 175, 0.75);
+    border-radius: 50%;
+    color: #f0d49a;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1;
+}
+
+.banner-symbol svg {
+    width: 30px;
+    height: 30px;
+    overflow: visible;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.45;
+}
+
+.banner-symbol > span {
+    color: rgba(255, 242, 210, 0.85);
+    font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+    font-size: 0.42rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.poster-art-caption {
+    position: absolute;
+    z-index: 1;
+    right: 14%;
+    bottom: 13px;
+    left: 14%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: rgba(238, 215, 163, 0.82);
+    font-size: clamp(0.47rem, 1.7vw, 0.59rem);
+    letter-spacing: 0.12em;
+    text-align: center;
+}
+
+.poster-art-caption i {
+    width: 28px;
+    height: 1px;
+    flex: 0 0 auto;
+    background: rgba(218, 183, 109, 0.7);
+}
+
+.poster-story {
+    position: relative;
+    padding: 20px clamp(27px, 6vw, 51px) 23px;
+    border-top: 1px solid rgba(192, 154, 83, 0.57);
+    background:
+        radial-gradient(ellipse at 9% 51%, rgba(147, 108, 48, 0.1), transparent 30%),
+        radial-gradient(ellipse at 92% 43%, rgba(135, 67, 55, 0.11), transparent 31%),
+        linear-gradient(135deg, #141e2e, #101725 64%, #18202d);
+}
+
+.poster-overline.MuiTypography-root {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: #c9ab6b;
+    font-size: 0.63rem;
+    font-weight: 650;
+    letter-spacing: 0.19em;
+}
+
+.poster-overline.MuiTypography-root::before,
+.poster-overline.MuiTypography-root::after {
+    width: clamp(15px, 6vw, 44px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201, 171, 107, 0.7));
+    content: "";
+}
+
+.poster-overline.MuiTypography-root::after {
+    transform: rotate(180deg);
+}
+
+.poster-story h1.MuiTypography-root {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #eed59a;
+    font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-size: clamp(2rem, 7.2vw, 3.1rem);
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+    text-shadow: 0 2px 18px rgba(211, 171, 93, 0.13);
+}
+
+.poster-story h1 span {
+    display: block;
+    margin-top: 8px;
+    color: #fff5dd;
+    font-size: 0.59em;
+    font-style: italic;
+    letter-spacing: 0.005em;
+    line-height: 1.2;
+}
+
+.poster-copy.MuiTypography-root {
+    max-width: 345px;
+    color: #c7c0b3;
+    font-size: 0.97rem;
+    line-height: 1.7;
+}
+
+.poster-action.MuiButton-root {
+    min-width: min(100%, 260px);
+    border-color: #d3b46d;
+    color: #211b19;
+    background: linear-gradient(145deg, #eddcae, #c8a05b);
+    box-shadow:
+        0 8px 26px rgba(0, 0, 0, 0.29),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.poster-action.MuiButton-root:hover {
+    border-color: #f6e8c1;
+    color: #211b19;
+    background: linear-gradient(145deg, #f8ebc7, #d6b36f);
+    box-shadow: 0 9px 28px rgba(200, 160, 91, 0.2);
+}
+
+.poster-note.MuiTypography-root {
+    color: #b8a880;
+    font-size: 0.56rem;
+    letter-spacing: 0.14em;
+    text-align: center;
+}
+
+@media print {
+    .invitation-page {
+        color: #372b27;
+        background: white;
+    }
+
+    .brand,
+    .page-footer {
+        color: #80613d;
+    }
+
+    .invitation-card.magic-frame.MuiCard-root {
+        border-color: #c8a960;
+        background: #f6efdf;
+        box-shadow: none;
+    }
+
+    .thank-you-card .MuiButton-root {
+        display: none;
+    }
+
+    .invitation-cover.MuiCard-root,
+    .poster-story {
+        color: #fff5dd;
+        background: #101725;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+@media (max-width: 540px) {
+    .poster-art {
+        min-height: 250px;
+    }
+
+    .banner-row {
+        bottom: 37px;
+        height: 124px;
+        gap: clamp(6px, 2.2vw, 12px);
+    }
+
+    .guild-banner {
+        width: clamp(48px, 16%, 67px);
+        height: 117px;
+        flex-basis: 67px;
+        padding-top: 17px;
+    }
+
+    .banner-symbol {
+        width: 43px;
+        height: 52px;
+    }
+
+    .banner-symbol svg {
+        width: 27px;
+        height: 27px;
+    }
+
+    .poster-story {
+        gap: 16px;
+        padding: 19px 24px 22px;
+    }
+
+    .poster-copy.MuiTypography-root {
+        font-size: 0.92rem;
+    }
+
+    .poster-art-caption {
+        right: 6%;
+        left: 6%;
+        gap: 6px;
+        letter-spacing: 0.085em;
+    }
+}
+
+@media (max-width: 360px) {
+    .poster-art {
+        min-height: 225px;
+    }
+
+    .banner-row {
+        right: 4%;
+        left: 4%;
+        gap: 5px;
+    }
+
+    .guild-banner {
+        width: 56px;
+        height: 110px;
+        flex-basis: 56px;
+    }
+}
+
+.poster-art::before {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: -38%;
+    width: 34%;
+    background: linear-gradient(90deg, transparent, rgba(247, 224, 172, 0.12), transparent);
+    content: "";
+    pointer-events: none;
+    transform: skewX(-18deg);
+    animation: moonbeam 9s ease-in-out infinite;
+}
+
+.castle-skyline .starlight circle {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: starPulse 3.6s ease-in-out infinite alternate;
+}
+
+.castle-skyline .starlight circle:nth-child(3n) {
+    animation-delay: -1.8s;
+}
+
+.castle-skyline .moon-glow {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: moonBreathe 5s ease-in-out infinite;
+}
+
+.guild-banner {
+    transform-origin: top center;
+    animation: bannerSway 5.2s ease-in-out infinite;
+}
+
+.guild-banner:nth-child(odd) {
+    animation-delay: -2.6s;
+}
+
+.banner-symbol {
+    animation: sigilGlow 3s ease-in-out infinite;
+}
+
+.poster-action.MuiButton-root {
+    animation: invitationGlow 3.8s ease-in-out infinite;
+}
+
+@keyframes moonbeam {
+    0%,
+    18% {
+        opacity: 0;
+        transform: translateX(0) skewX(-18deg);
+    }
+
+    35%,
+    58% {
+        opacity: 1;
+    }
+
+    78%,
+    100% {
+        opacity: 0;
+        transform: translateX(470%) skewX(-18deg);
+    }
+}
+
+@keyframes starPulse {
+    from {
+        opacity: 0.45;
+        transform: scale(0.82);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.35);
+    }
+}
+
+@keyframes moonBreathe {
+    0%,
+    100% {
+        opacity: 0.72;
+        filter: drop-shadow(0 0 2px rgba(245, 220, 166, 0.18));
+    }
+
+    50% {
+        opacity: 1;
+        filter: drop-shadow(0 0 11px rgba(245, 220, 166, 0.62));
+    }
+}
+
+@keyframes bannerSway {
+    0%,
+    100% {
+        transform: rotate(-1.5deg);
+    }
+
+    50% {
+        transform: rotate(1.5deg);
+    }
+}
+
+@keyframes sigilGlow {
+    0%,
+    100% {
+        box-shadow: 0 0 0 rgba(240, 212, 154, 0);
+    }
+
+    50% {
+        box-shadow: 0 0 13px rgba(240, 212, 154, 0.42);
+    }
+}
+
+@keyframes invitationGlow {
+    0%,
+    100% {
+        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.29), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 8px 30px rgba(211, 171, 93, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.52);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .poster-art::before,
+    .castle-skyline .starlight circle,
+    .castle-skyline .moon-glow,
+    .guild-banner,
+    .banner-symbol,
+    .poster-action {
+        animation: none;
+    }
+}
+
+.share-action.MuiButton-root {
+    border-color: #8e4650;
+    background: linear-gradient(135deg, #85444d, #633340);
+}
+
+.share-action.MuiButton-root:hover {
+    border-color: #713846;
+    background: linear-gradient(135deg, #9b5960, #713846);
+}
+
+.print-action.MuiButton-root {
+    min-height: 46px;
+    border-color: #c8b991;
+    border-radius: 99px;
+    color: #735f4a;
+}
+
+@media (max-width: 540px) {
+    body {
+        min-height: 100svh;
+    }
+
+    .invitation-page {
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: max(14px, env(safe-area-inset-top)) 0 max(18px, env(safe-area-inset-bottom));
+    }
+
+    .page-shell.MuiContainer-root {
+        width: 100%;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .brand {
+        margin-bottom: 15px;
+        font-size: 0.66rem;
+        letter-spacing: 0.14em;
+    }
+
+    .brand .MuiSvgIcon-root {
+        font-size: 1.15rem;
+    }
+
+    .invitation-card.magic-frame.MuiCard-root {
+        border-radius: 18px;
+    }
+
+    .invitation-card.magic-frame.MuiCard-root::before {
+        inset: 7px;
+    }
+
+    .invitation-card:not(.invitation-cover) .card-content {
+        padding: 28px 22px;
+    }
+
+    .step-content {
+        gap: 20px;
+    }
+
+    .invitation-card .MuiOutlinedInput-input,
+    .invitation-card input {
+        min-height: 24px;
+        font-size: 16px;
+    }
+
+    .choice-action.MuiCardActionArea-root {
+        min-height: 104px;
+        padding: 16px;
+    }
+
+    .choice-title.MuiTypography-root {
+        font-size: 1rem;
+    }
+
+    .step-actions {
+        display: grid;
+        grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+        gap: 8px;
+    }
+
+    .step-actions .MuiButton-root {
+        width: 100%;
+        min-width: 0;
+        min-height: 50px;
+        padding-right: 9px;
+        padding-left: 9px;
+        font-size: 0.82rem;
+        line-height: 1.2;
+    }
+
+    .poster-art {
+        min-height: clamp(280px, 76vw, 310px);
+    }
+
+    .banner-row {
+        right: 3%;
+        bottom: 39px;
+        left: 3%;
+        height: 138px;
+        align-items: flex-start;
+        gap: clamp(4px, 1.8vw, 9px);
+    }
+
+    .guild-banner {
+        width: clamp(58px, 19%, 76px);
+        height: 128px;
+        flex-basis: clamp(58px, 19%, 76px);
+        padding-top: 13px;
+    }
+
+    .banner-symbol {
+        width: 100%;
+        max-width: 68px;
+        height: 91px;
+        gap: 5px;
+        padding: 6px 2px;
+        border-radius: 48% 48% 45% 45%;
+    }
+
+    .banner-symbol svg {
+        width: 34px;
+        height: 34px;
+    }
+
+    .banner-symbol > span {
+        font-size: clamp(0.52rem, 2.4vw, 0.61rem);
+        letter-spacing: 0.015em;
+    }
+
+    .poster-art-caption {
+        right: 4%;
+        bottom: 12px;
+        left: 4%;
+        gap: 8px;
+        font-size: clamp(0.58rem, 2.7vw, 0.68rem);
+        font-weight: 700;
+        letter-spacing: 0.075em;
+    }
+
+    .poster-story {
+        gap: 19px;
+        padding: 27px 22px 30px;
+    }
+
+    .poster-overline.MuiTypography-root {
+        font-size: clamp(0.68rem, 3vw, 0.76rem);
+        letter-spacing: 0.13em;
+    }
+
+    .poster-story h1.MuiTypography-root {
+        font-size: clamp(2.6rem, 11vw, 3.2rem);
+        line-height: 1;
+    }
+
+    .poster-story h1 span {
+        margin-top: 10px;
+        font-size: 0.55em;
+        line-height: 1.18;
+    }
+
+    .poster-copy.MuiTypography-root {
+        max-width: 330px;
+        font-size: clamp(1.05rem, 4.5vw, 1.15rem);
+        line-height: 1.6;
+    }
+
+    .poster-action.MuiButton-root,
+    .share-action.MuiButton-root,
+    .thank-you-card .print-action.MuiButton-root {
+        width: 100%;
+        min-height: 54px;
+        font-size: 0.95rem;
+    }
+
+    .poster-note.MuiTypography-root {
+        font-size: 0.64rem;
+        line-height: 1.5;
+        letter-spacing: 0.09em;
+    }
+
+    .page-footer {
+        margin-top: 17px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 360px) {
+    .page-shell.MuiContainer-root {
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+
+    .invitation-card:not(.invitation-cover) .card-content {
+        padding-right: 18px;
+        padding-left: 18px;
+    }
+
+    .banner-row {
+        right: 4%;
+        left: 4%;
+        gap: 5px;
+    }
+
+    .guild-banner {
+        width: 22%;
+        flex-basis: 22%;
+    }
+
+    .banner-symbol {
+        width: 100%;
+        height: 86px;
+    }
+
+    .banner-symbol > span {
+        font-size: 0.5rem;
+        letter-spacing: 0;
+    }
+}
+
+@media (max-height: 700px) and (max-width: 540px) {
+    .invitation-page {
+        align-items: flex-start;
+    }
+
+    .poster-art {
+        min-height: 250px;
+    }
+
+    .banner-row {
+        bottom: 35px;
+        height: 120px;
+    }
+
+    .guild-banner {
+        height: 113px;
+    }
+
+    .banner-symbol {
+        height: 82px;
+    }
+}
+
+@media (max-width: 540px) {
+    .castle-skyline {
+        transform-origin: 50% 80%;
+        animation: castleReveal 8s ease-in-out infinite;
+    }
+
+    .guild-banner {
+        animation-duration: 6.5s;
+    }
+
+    .guild-banner:nth-child(2n) {
+        animation-delay: -3.25s;
+    }
+
+    .poster-overline.MuiTypography-root::before,
+    .poster-overline.MuiTypography-root::after {
+        width: clamp(15px, 5vw, 25px);
+    }
+}
+
+@keyframes castleReveal {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.035);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .castle-skyline {
+        animation: none;
+    }
+}
