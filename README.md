@@ -1,13 +1,14 @@
 # Una cita contigo
 
-Invitación romántica con estética original de fantasía: una portada de cartel con castillo bajo el cielo nocturno, cuatro estandartes de colores y tipografía dorada. La invitada puede elegir una fecha, escoger entre CDMX y Toluca y seleccionar uno de tres planes en cada ciudad. La respuesta se guarda en SQLite y aparece en una página de agradecimiento.
+Invitación romántica con una estética original de fantasía: una portada ilustrada bajo el cielo nocturno, estandartes y detalles dorados. Incluye una versión Laravel y una versión estática para publicar gratis en GitHub Pages, sin base de datos.
 
 ## Tecnologías
 
 - Laravel 13 y PHP 8.5
 - React, TypeScript e Inertia
 - Material UI
-- SQLite
+- Laravel guarda invitaciones como JSON privado en `storage/app/private/invitations`
+- GitHub Pages comparte la elección mediante un enlace con los detalles seleccionados
 
 ## Puesta en marcha en Windows
 
@@ -18,12 +19,8 @@ $phpHome = Join-Path $env:LOCALAPPDATA 'Microsoft\WinGet\Packages\PHP.PHP.8.5_Mi
 $nodeHome = Join-Path $env:LOCALAPPDATA 'Microsoft\WinGet\Packages\OpenJS.NodeJS.LTS_Microsoft.Winget.Source_8wekyb3d8bbwe\node-v24.20.0-win-x64'
 $env:PATH = "$phpHome;$nodeHome;$env:PATH"
 if (-not (Test-Path .env)) { Copy-Item .env.example .env }
-if (-not (Test-Path .\database\database.sqlite)) {
-    New-Item -ItemType File -Path .\database\database.sqlite | Out-Null
-}
-php C:\composer\composer.phar install
+composer install
 php artisan key:generate
-php artisan migrate
 npm.cmd install
 npm.cmd run build
 .\dev.cmd
@@ -34,13 +31,38 @@ La aplicación queda en <http://localhost:8000>. `dev.cmd` configura PHP y Node 
 ## Personalización
 
 - Edita `INVITATION_NAME` en `.env` para poner su nombre.
-- Edita `config/invitacion.php` para cambiar los textos y los tres planes de cada ciudad.
+- Para la versión estática, establece `VITE_INVITATION_NAME` durante la compilación; si no, se usa “Sandy”.
+- Edita `resources/data/invitacion.json` para agregar ciudades o lugares y cambiar las fechas bloqueadas; tanto Laravel como GitHub Pages leen este archivo.
+- Usa identificadores únicos para cada ciudad y lugar; `otro` está reservado para el lugar personalizado.
+- La versión Laravel guarda las invitaciones en `storage/app/private/invitations`, fuera del directorio público. En su hosting, conserva esa carpeta en almacenamiento persistente.
+- GitHub Pages no ejecuta PHP ni ofrece almacenamiento compartido. Su versión estática incluye los detalles en el enlace de agradecimiento; cualquier persona que reciba ese enlace podrá ver la fecha y el lugar seleccionados.
 - El diseño utiliza motivos originales de fantasía; no incluye logotipos, personajes ni material oficial de ninguna saga.
-- Las respuestas guardan solo la fecha, la ciudad y el plan elegido en `database/database.sqlite`.
+
+## Publicar en GitHub Pages
+
+El workflow de GitHub Actions compila y publica la versión estática automáticamente al subir cambios a `main`.
+
+1. Sube el proyecto a GitHub.
+2. En el repositorio, abre **Settings → Pages** y elige **GitHub Actions** como fuente de publicación.
+3. Espera a que termine el workflow **Deploy static invitation to GitHub Pages** en la pestaña **Actions**.
+4. Comparte `https://yazminc.github.io/san/` con Sandy.
+
+La compilación de Pages se puede probar localmente en Windows:
+
+```powershell
+$env:GITHUB_PAGES = 'true'
+npm.cmd run build:pages
+Remove-Item Env:GITHUB_PAGES
+```
+
+Los archivos publicados se generan en `dist/`. No subas esa carpeta al repositorio; GitHub Actions crea y publica el artefacto.
 
 ## Validación
 
 ```powershell
 php artisan test
 npm.cmd run build
+$env:GITHUB_PAGES = 'true'
+npm.cmd run build:pages
+Remove-Item Env:GITHUB_PAGES
 ```

@@ -19,6 +19,8 @@ import type { ReactNode } from 'react';
 type Props = {
     recipientName: string;
     shareText: string;
+    shareUrl?: string;
+    staticMode?: boolean;
     invitation: {
         fecha: string;
         ciudad: string;
@@ -26,7 +28,13 @@ type Props = {
     };
 };
 
-export default function Gracias({ invitation, recipientName, shareText }: Props) {
+export default function Gracias({
+    invitation,
+    recipientName,
+    shareText,
+    shareUrl,
+    staticMode = false,
+}: Props) {
     const [shareStatus, setShareStatus] = useState('');
     const [shareError, setShareError] = useState('');
     const [showManualCopy, setShowManualCopy] = useState(false);
@@ -41,6 +49,7 @@ export default function Gracias({ invitation, recipientName, shareText }: Props)
                 await navigator.share({
                     title: 'Una cita contigo',
                     text: shareText,
+                    url: shareUrl,
                 });
                 setShareStatus('Invitación compartida. ¡Gracias por elegir dónde enviarla!');
             } catch (error) {
@@ -66,13 +75,13 @@ export default function Gracias({ invitation, recipientName, shareText }: Props)
 
     return (
         <>
-            <Head title="¡Una nueva aventura nos espera!" />
+            {!staticMode && <Head title="¡Una nueva aventura nos espera!" />}
 
             <Box className="invitation-page">
                 <Container maxWidth="sm" className="page-shell">
                     <Stack className="brand" direction="row" spacing={1} sx={{ alignItems: 'center' }}>
                         <AutoAwesomeRounded fontSize="small" />
-                        <Typography variant="body2">ACADEMIA DE PEQUEÑAS MAGIAS</Typography>
+                        <Typography variant="body2">UN UNIVERSO SOLO NUESTRO</Typography>
                     </Stack>
 
                     <Card className="invitation-card magic-frame thank-you-card" elevation={0}>

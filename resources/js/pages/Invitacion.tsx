@@ -38,6 +38,7 @@ type Props = {
     cities: Record<string, City>;
     recipientName: string;
     blockedDates: string[];
+    staticMode?: boolean;
 };
 
 const formatLocalDate = (date: Date) => {
@@ -51,7 +52,12 @@ const formatLocalDate = (date: Date) => {
 const formatSpanishDate = (date: string) =>
     new Intl.DateTimeFormat('es-MX', { dateStyle: 'full' }).format(new Date(`${date}T12:00:00`));
 
-export default function Invitacion({ cities, recipientName, blockedDates }: Props) {
+export default function Invitacion({
+    cities,
+    recipientName,
+    blockedDates,
+    staticMode = false,
+}: Props) {
     const [step, setStep] = useState(0);
     const [dateNotice, setDateNotice] = useState('');
     const form = useForm({
@@ -67,6 +73,14 @@ export default function Invitacion({ cities, recipientName, blockedDates }: Prop
     const progress = step * 25;
 
     const submitInvitation = () => {
+        if (staticMode) {
+            const query = new URLSearchParams(form.data);
+
+            window.location.assign(`${import.meta.env.BASE_URL}?${query.toString()}`);
+
+            return;
+        }
+
         form.post('/invitacion');
     };
 
@@ -85,13 +99,13 @@ export default function Invitacion({ cities, recipientName, blockedDates }: Prop
 
     return (
         <>
-            <Head title="Una aventura para dos" />
+            {!staticMode && <Head title="Una aventura para dos" />}
 
             <Box className="invitation-page">
                 <Container maxWidth="sm" className="page-shell">
                     <Stack className="brand" direction="row" spacing={1} sx={{ alignItems: 'center' }}>
                         <AutoAwesomeRounded fontSize="small" />
-                        <Typography variant="body2">ACADEMIA DE PEQUEÑAS MAGIAS</Typography>
+                        <Typography variant="body2">UN UNIVERSO SOLO NUESTRO</Typography>
                     </Stack>
 
                     <Card
@@ -120,8 +134,9 @@ export default function Invitacion({ cities, recipientName, blockedDates }: Prop
                                             UNA CARTA DE INVITACIÓN
                                         </Typography>
                                         <Typography component="h1" variant="h2" align="center">
-                                            Oye, {recipientName}
-                                            <span>una aventura nos espera</span>
+                                            <span className="poster-recipient-intro">Oye,</span>
+                                            <span className="poster-name">{recipientName}</span>
+                                            <span className="poster-title-subtitle">una aventura nos espera</span>
                                         </Typography>
                                         <Typography className="poster-copy" align="center">
                                             Preparé un pequeño mapa mágico para elegir el día, el lugar y
@@ -319,107 +334,126 @@ export default function Invitacion({ cities, recipientName, blockedDates }: Prop
 
 function MagicalPosterArt() {
     const banners = [
-        { color: 'ember', label: 'Radiante', motif: 'flame' },
-        { color: 'grove', label: 'Brillante', motif: 'leaf' },
-        { color: 'sun', label: 'Hermosa', motif: 'star' },
-        { color: 'mist', label: 'Preciosa', motif: 'wave' },
+        { color: 'rose', label: 'Radiante', motif: 'heart' },
+        { color: 'violet', label: 'Brillante', motif: 'sparkle' },
+        { color: 'teal', label: 'Bonita', motif: 'moon' },
+        { color: 'amber', label: 'Increíble', motif: 'star' },
     ];
 
     return (
-        <Box className="poster-art" aria-label="Castillo de fantasía con cuatro palabras para Sandy">
+        <Box className="poster-art" aria-label="Salón encantado con estandartes hechos para Sandy">
             <svg
-                className="castle-skyline"
-                viewBox="0 0 900 410"
+                className="enchanted-hall"
+                viewBox="0 0 900 440"
                 role="img"
                 aria-hidden="true"
                 preserveAspectRatio="xMidYMid slice"
             >
                 <defs>
-                    <linearGradient id="twilight" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0%" stopColor="#111a2b" />
-                        <stop offset="58%" stopColor="#263a52" />
-                        <stop offset="100%" stopColor="#a7784a" />
+                    <linearGradient id="hall-twilight" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stopColor="#100e25" />
+                        <stop offset="48%" stopColor="#40213f" />
+                        <stop offset="100%" stopColor="#c36d68" />
                     </linearGradient>
-                    <radialGradient id="castle-glow" cx="50%" cy="59%" r="46%">
-                        <stop offset="0%" stopColor="#edc580" stopOpacity=".4" />
+                    <radialGradient id="hall-glow" cx="50%" cy="72%" r="58%">
+                        <stop offset="0%" stopColor="#ffd68a" stopOpacity=".66" />
+                        <stop offset="45%" stopColor="#ec8b79" stopOpacity=".2" />
                         <stop offset="100%" stopColor="#d5aa68" stopOpacity="0" />
                     </radialGradient>
+                    <linearGradient id="window-light" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stopColor="#171633" />
+                        <stop offset="72%" stopColor="#8b4169" />
+                        <stop offset="100%" stopColor="#f4b77a" />
+                    </linearGradient>
+                    <linearGradient id="candle-wax" x1="0" x2="1">
+                        <stop offset="0%" stopColor="#d6b989" />
+                        <stop offset="45%" stopColor="#fff0cf" />
+                        <stop offset="100%" stopColor="#bd986d" />
+                    </linearGradient>
                 </defs>
-                <rect width="900" height="410" fill="url(#twilight)" />
-                <rect width="900" height="410" fill="url(#castle-glow)" />
-                <g className="starlight" fill="#f3deb1">
-                    <circle cx="92" cy="69" r="1.8" />
-                    <circle cx="158" cy="119" r="1.4" />
-                    <circle cx="230" cy="55" r="1.7" />
-                    <circle cx="300" cy="98" r="1.2" />
-                    <circle cx="362" cy="39" r="1.5" />
-                    <circle cx="462" cy="82" r="1.6" />
-                    <circle cx="537" cy="46" r="1.3" />
-                    <circle cx="635" cy="101" r="1.8" />
-                    <circle cx="724" cy="56" r="1.4" />
-                    <circle cx="809" cy="117" r="1.5" />
-                    <circle cx="865" cy="66" r="1.4" />
+                <rect width="900" height="440" fill="url(#hall-twilight)" />
+                <rect width="900" height="440" fill="url(#hall-glow)" />
+                <g className="starlight" fill="#f8dfa9">
+                    <circle cx="63" cy="68" r="1.8" />
+                    <circle cx="142" cy="114" r="1.4" />
+                    <circle cx="224" cy="46" r="1.7" />
+                    <circle cx="318" cy="97" r="1.2" />
+                    <circle cx="402" cy="39" r="1.5" />
+                    <circle cx="508" cy="76" r="1.6" />
+                    <circle cx="602" cy="42" r="1.3" />
+                    <circle cx="685" cy="101" r="1.8" />
+                    <circle cx="769" cy="55" r="1.4" />
+                    <circle cx="838" cy="123" r="1.5" />
+                    <circle cx="872" cy="71" r="1.4" />
                 </g>
-                <g fill="#e1c27d" opacity=".8" fontFamily="Georgia, serif">
-                    <text x="112" y="167" fontSize="22">✧</text>
-                    <text x="755" y="153" fontSize="25">✦</text>
-                    <text x="194" y="47" fontSize="13">✦</text>
-                    <text x="693" y="67" fontSize="14">✧</text>
+                <g fill="none" stroke="#dc9b75" strokeOpacity=".43">
+                    <path d="M62 438V205a388 330 0 0 1 776 0v233" strokeWidth="25" />
+                    <path d="M143 438V207a307 266 0 0 1 614 0v231" strokeWidth="15" />
+                    <path d="M229 438V211a221 203 0 0 1 442 0v227" strokeWidth="10" />
                 </g>
-                <circle className="moon-glow" cx="696" cy="109" r="31" fill="#dfceaa" opacity=".82" />
-                <circle cx="710" cy="96" r="29" fill="#34445a" />
-                <path d="M0 312 77 264l64 25 86-69 70 40 77-89 66 40 64-53 72 51 84-74 67 52 73-43v266H0Z"
-                    fill="#202c3b" opacity=".85" />
-                <path d="M0 350 91 305l69 25 66-55 70 25 63-89 76 25 76-68 70 56 70-35 88 46 72-26 89 47v154H0Z"
-                    fill="#131d2b" />
-                <g fill="#172233" stroke="#b48b52" strokeOpacity=".24" strokeWidth="2">
-                    <path d="M122 337V204h49v133zm-11-132 35-49 35 49z" />
-                    <path d="M212 337V176h61v161zm-13-160 43-59 44 59z" />
-                    <path d="M298 337V218h48v119zm-10-118 34-48 34 48z" />
-                    <path d="M394 337V156h72v181zm-16-180 52-74 52 74z" />
-                    <path d="M488 337V205h53v132zm-12-131 38-52 39 52z" />
-                    <path d="M578 337V173h64v164zm-14-163 46-65 46 65z" />
-                    <path d="M675 337V213h48v124zm-10-123 34-49 35 49z" />
-                    <path d="M742 337V182h57v155zm-13-154 41-57 42 57z" />
+                <g fill="#281933" stroke="#d58a70" strokeOpacity=".4" strokeWidth="3">
+                    <path d="M35 440V212l59-28 59 28v228z" />
+                    <path d="M746 440V212l59-28 60 28v228z" />
+                    <path d="M85 219V183a365 310 0 0 1 730 0v36h-17v-34a348 293 0 0 0-696 0v34z" />
                 </g>
-                <g fill="#e9c776" opacity=".9">
-                    <path d="M151 223h8v17h-8zm78 5h8v18h-8zm108 17h8v19h-8zm79-61h8v20h-8zm36 0h8v20h-8zm78 53h8v18h-8zm78-47h8v19h-8zm100 44h8v18h-8z" />
+                <path d="M324 369V205a126 143 0 0 1 252 0v164z" fill="#24172f" stroke="#e0a16c" strokeOpacity=".8" strokeWidth="5" />
+                <path d="M337 369V207a113 128 0 0 1 226 0v162z" fill="url(#window-light)" />
+                <path d="M450 83v286M337 238h226M370 151l160 160m0-160L370 311" fill="none" stroke="#eeb886" strokeOpacity=".34" strokeWidth="4" />
+                <path d="M383 369v-92a67 76 0 0 1 134 0v92z" fill="#261b31" stroke="#efbc7c" strokeOpacity=".68" strokeWidth="4" />
+                <g fill="#d98f71" opacity=".55">
+                    <path d="M70 239h34v201H70zm726 0h34v201h-34z" />
+                    <path d="M178 174h20v266h-20zm524 0h20v266h-20z" />
                 </g>
-                <path d="M0 348q130-21 260 3t263-1q162-23 377 2v58H0Z" fill="#101825" />
-                <g fill="#e4bd70" opacity=".56">
-                    <path d="M92 360h2v18h-2zm312-7h2v20h-2zm301 4h2v19h-2zm145-2h2v17h-2z" />
+                <g fill="url(#candle-wax)" opacity=".96">
+                    <rect x="74" y="151" width="12" height="88" rx="4" />
+                    <rect x="150" y="112" width="10" height="75" rx="4" />
+                    <rect x="231" y="177" width="9" height="57" rx="4" />
+                    <rect x="306" y="117" width="9" height="65" rx="4" />
+                    <rect x="582" y="131" width="9" height="68" rx="4" />
+                    <rect x="658" y="96" width="10" height="80" rx="4" />
+                    <rect x="737" y="155" width="12" height="84" rx="4" />
+                    <rect x="817" y="121" width="10" height="72" rx="4" />
                 </g>
-                <rect y="397" width="900" height="13" fill="#101725" opacity=".56" />
+                <g className="candle-flames" fill="#ffe8a6">
+                    <path d="M80 147q-13-15 0-29 12 14 0 29m75-41q-12-14 0-27 11 13 0 27m81 68q-10-12 0-23 10 11 0 23m74-56q-10-12 0-23 10 11 0 23m277 4q-10-12 0-23 10 11 0 23m75-44q-12-14 0-27 11 13 0 27m80 57q-13-15 0-29 12 14 0 29m79-46q-11-13 0-25 11 12 0 25" />
+                </g>
+                <path d="M0 329q170-31 332 3t265 0q153-31 303-1v109H0Z" fill="#21162b" opacity=".83" />
+                <path d="m310 440 107-112h66L590 440z" fill="#ecb178" opacity=".23" />
+                <path d="m368 440 68-112h28l68 112z" fill="#ffe0a2" opacity=".21" />
+                <path d="M0 357q225-25 450 3 225-28 450-3v83H0Z" fill="#151426" opacity=".56" />
+                <g fill="#f4c985" opacity=".78">
+                    <circle cx="450" cy="348" r="5" />
+                    <circle cx="216" cy="384" r="2" />
+                    <circle cx="695" cy="390" r="2" />
+                    <path d="M83 338h6v24h-6zm728-4h6v24h-6z" />
+                </g>
             </svg>
 
-            <Box className="banner-row" aria-label="Cuatro palabras que describen a Sandy">
+            <Box className="banner-row" aria-label="Cuatro detalles de nuestra aventura">
                 {banners.map((banner) => (
                     <Box
                         key={banner.color}
                         className={`guild-banner guild-banner-${banner.color}`}
-                        aria-label={`Sandy es ${banner.label.toLowerCase()}`}
+                        aria-label={`Un detalle de ${banner.label.toLowerCase()} para Sandy`}
                     >
                         <span className="banner-symbol" aria-hidden="true">
                             <svg viewBox="0 0 32 32" fill="none">
-                                {banner.motif === 'flame' && (
-                                    <path d="M17 3c2 7-5 8-3 14 1-2 3-3 5-5 4 5 5 8 3 12-1 3-4 5-8 5-5 0-9-4-8-9 0-4 3-7 6-10 0 5 1 6 2 7 0-5 5-8 3-14Z" />
+                                {banner.motif === 'heart' && (
+                                    <path d="M16 27S5 20.3 5 13a6 6 0 0 1 11-4 6 6 0 0 1 11 4c0 7.3-11 14-11 14Z" />
                                 )}
-                                {banner.motif === 'leaf' && (
+                                {banner.motif === 'sparkle' && (
                                     <>
-                                        <path d="M27 5C14 4 6 9 6 18c0 5 4 9 9 9 9 0 14-9 12-22Z" />
-                                        <path d="M7 27 23 10m-9 9 8 1" />
+                                        <path d="m16 3 3.4 8.5L28 15l-8.6 3.5L16 27l-3.4-8.5L4 15l8.6-3.5L16 3Z" />
+                                        <path d="m26 22 .9 2.1L29 25l-2.1.9L26 28l-.9-2.1L23 25l2.1-.9L26 22Z" />
                                     </>
+                                )}
+                                {banner.motif === 'moon' && (
+                                    <path d="M25 19a11 11 0 0 1-14-14A12 12 0 1 0 25 19Z" />
                                 )}
                                 {banner.motif === 'star' && (
                                     <>
-                                        <path d="m16 3 3.4 8.5L28 15l-8.6 3.5L16 27l-3.4-8.5L4 15l8.6-3.5L16 3Z" />
-                                        <circle cx="16" cy="15" r="3" />
-                                    </>
-                                )}
-                                {banner.motif === 'wave' && (
-                                    <>
-                                        <path d="M4 13c4-5 7 5 12 0s8 5 12 0M4 20c4-5 7 5 12 0s8 5 12 0" />
-                                        <path d="M16 4v4m-2-2h4" />
+                                        <path d="M16 3c1.7 7.3 5.7 11.3 13 13-7.3 1.7-11.3 5.7-13 13C14.3 21.7 10.3 17.7 3 16c7.3-1.7 11.3-5.7 13-13Z" />
+                                        <circle cx="16" cy="16" r="3" />
                                     </>
                                 )}
                             </svg>
@@ -429,9 +463,9 @@ function MagicalPosterArt() {
                 ))}
             </Box>
             <Box className="poster-art-caption">
-                <span>ASÍ TE VEO, SANDY</span>
+                <span>UN UNIVERSO</span>
                 <i />
-                <span>UNA PERSONA INOLVIDABLE</span>
+                <span>HECHO PARA NOSOTROS</span>
             </Box>
         </Box>
     );

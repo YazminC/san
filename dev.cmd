@@ -11,4 +11,5 @@ if not exist "%NODE_HOME%\node.exe" (
     exit /b 1
 )
 set "PATH=%PHP_HOME%;%NODE_HOME%;%PATH%"
+set "INERTIA_SSR_ENABLED=false"
 php artisan dev

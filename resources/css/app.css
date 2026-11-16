@@ -736,6 +736,124 @@ body,
     }
 }
 
+@font-face {
+    font-family: "UnifrakturCook";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../fonts/unifraktur-cook.ttf") format("truetype");
+}
+
+.poster-story h1.MuiTypography-root {
+    gap: 0;
+}
+
+.poster-story h1 .poster-recipient-intro {
+    margin-bottom: 4px;
+    color: #e8d8b7;
+    font-family: "Palatino Linotype", "Book Antiqua", "Baskerville", Georgia, serif;
+    font-size: clamp(1.05rem, 3.8vw, 1.4rem);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    line-height: 1.3;
+    text-shadow: none;
+}
+
+.poster-story h1 .poster-name {
+    position: relative;
+    display: block;
+    margin-top: 0;
+    padding: 0.05em 0.16em 0.12em;
+    color: #f5d894;
+    background: linear-gradient(180deg, #fff4cf 8%, #ebc874 47%, #b77c39 76%, #f8e2a8 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "UnifrakturCook", "Old English Text MT", "Palatino Linotype", serif;
+    font-size: clamp(3.4rem, 11vw, 5rem);
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0.015em;
+    line-height: 1.18;
+    text-shadow: none;
+    filter: drop-shadow(0 3px 1px rgba(62, 33, 25, 0.92))
+        drop-shadow(0 0 15px rgba(233, 190, 105, 0.4));
+    animation: nameEnchantment 4.8s ease-in-out infinite;
+}
+
+.poster-story h1 .poster-name::before,
+.poster-story h1 .poster-name::after {
+    position: absolute;
+    top: 44%;
+    color: #f3d994;
+    content: "✧";
+    font-family: Georgia, serif;
+    font-size: 0.21em;
+    -webkit-text-fill-color: #f3d994;
+    filter: drop-shadow(0 0 8px rgba(255, 222, 152, 0.9));
+    animation: nameSparkle 2.8s ease-in-out infinite;
+}
+
+.poster-story h1 .poster-name::before {
+    left: -0.75em;
+}
+
+.poster-story h1 .poster-name::after {
+    right: -0.75em;
+    animation-delay: -1.4s;
+}
+
+.poster-story h1 .poster-title-subtitle {
+    margin-top: 5px;
+    color: #fff0d6;
+    font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-size: 0.47em;
+    font-style: italic;
+    letter-spacing: 0.015em;
+    line-height: 1.2;
+}
+
+@keyframes nameEnchantment {
+    0%,
+    100% {
+        filter: drop-shadow(0 3px 1px rgba(62, 33, 25, 0.92))
+            drop-shadow(0 0 11px rgba(233, 190, 105, 0.28));
+    }
+
+    50% {
+        filter: drop-shadow(0 3px 1px rgba(62, 33, 25, 0.92))
+            drop-shadow(0 0 23px rgba(255, 218, 139, 0.68));
+    }
+}
+
+@keyframes nameSparkle {
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: scale(0.7) rotate(-12deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(12deg);
+    }
+}
+
+@media (max-width: 540px) {
+    .poster-story h1 .poster-name {
+        font-size: clamp(3rem, 15vw, 4.5rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .poster-story h1 .poster-name,
+    .poster-story h1 .poster-name::before,
+    .poster-story h1 .poster-name::after {
+        animation: none;
+    }
+}
+
 .invitation-card.invitation-cover.MuiCard-root {
     overflow: hidden;
     border-color: #b99251;
@@ -1488,6 +1606,758 @@ body,
 
 @media (prefers-reduced-motion: reduce) {
     .castle-skyline {
+        animation: none;
+    }
+}
+
+body,
+:root {
+    color: #382736;
+    background: #100e22;
+}
+
+.invitation-page {
+    background:
+        radial-gradient(ellipse at 50% 9%, rgba(128, 77, 132, 0.3), transparent 36%),
+        radial-gradient(ellipse at 12% 78%, rgba(153, 71, 91, 0.2), transparent 34%),
+        radial-gradient(ellipse at 88% 84%, rgba(190, 143, 75, 0.17), transparent 33%),
+        radial-gradient(1px 1px at 8% 16%, #f8dfa9 99%, transparent),
+        radial-gradient(1px 1px at 24% 76%, #f8dfa9 99%, transparent),
+        radial-gradient(1px 1px at 43% 22%, #f4e9ce 99%, transparent),
+        radial-gradient(1px 1px at 67% 12%, #f8dfa9 99%, transparent),
+        radial-gradient(1px 1px at 89% 61%, #f4e9ce 99%, transparent),
+        #100e22;
+    background-size: auto, auto, auto, 217px 181px, 283px 219px, 337px 263px, 307px 229px,
+        271px 241px, auto;
+}
+
+.brand {
+    color: #efd39a;
+    letter-spacing: 0.2em;
+}
+
+.invitation-card.magic-frame.MuiCard-root {
+    border-color: #d3b36e;
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.46),
+        0 0 46px rgba(190, 119, 111, 0.16);
+}
+
+.invitation-card:not(.invitation-cover).magic-frame.MuiCard-root {
+    background:
+        radial-gradient(ellipse at 50% 0, rgba(247, 232, 199, 0.96), transparent 58%),
+        linear-gradient(145deg, #fbf3e2, #eee1c6);
+}
+
+.invitation-card:not(.invitation-cover) .card-content {
+    background:
+        radial-gradient(1px 1px at 12% 19%, rgba(145, 105, 58, 0.13) 99%, transparent),
+        radial-gradient(1px 1px at 84% 73%, rgba(145, 105, 58, 0.11) 99%, transparent);
+    background-size: 41px 43px, 53px 47px;
+}
+
+.step-kicker,
+.step-kicker .MuiSvgIcon-root {
+    color: #805488;
+}
+
+.step-content h1.MuiTypography-root {
+    color: #39243f;
+}
+
+.invitation-card .MuiOutlinedInput-root {
+    background: rgba(255, 252, 244, 0.9);
+}
+
+.invitation-card .MuiOutlinedInput-notchedOutline {
+    border-color: #d2bd93;
+}
+
+.invitation-card .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline,
+.invitation-card .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #92629a;
+}
+
+.choice-card.MuiCard-root {
+    border-color: #d9c79f;
+    background: rgba(255, 251, 240, 0.88);
+}
+
+.choice-card.MuiCard-root:hover {
+    border-color: #a8844d;
+    background: #fffaf0;
+    box-shadow: 0 10px 24px rgba(75, 43, 76, 0.13);
+}
+
+.choice-card.selected.MuiCard-root {
+    border-color: #875590;
+    background: #f0e5ee;
+    box-shadow: 0 0 0 3px rgba(135, 85, 144, 0.14);
+}
+
+.choice-emoji {
+    border: 1px solid rgba(135, 85, 144, 0.18);
+    background: #f0e8ed;
+}
+
+.choice-title.MuiTypography-root {
+    color: #402d44;
+}
+
+.progress-area .MuiLinearProgress-root {
+    background: #e5d7bd;
+}
+
+.progress-area .MuiLinearProgress-bar {
+    background: linear-gradient(90deg, #886091, #a2776b, #d0a356);
+}
+
+.primary-action.MuiButton-root,
+.step-actions .MuiButton-contained,
+.share-action.MuiButton-root {
+    border-color: #70476f;
+    color: #fff8e9;
+    background: linear-gradient(135deg, #79517e, #4d304f);
+    box-shadow: 0 8px 22px rgba(66, 39, 72, 0.24);
+}
+
+.primary-action.MuiButton-root:hover,
+.step-actions .MuiButton-contained:hover,
+.share-action.MuiButton-root:hover {
+    border-color: #c99d5f;
+    color: #fffaf0;
+    background: linear-gradient(135deg, #93689a, #634064);
+}
+
+.step-actions .MuiButton-contained.Mui-disabled {
+    border-color: #c6b99f;
+    color: #817765;
+    background: #ddd2bb;
+}
+
+.print-action.MuiButton-root {
+    border-color: #b7a16e;
+    color: #62495f;
+}
+
+.page-footer,
+.page-footer .MuiSvgIcon-root,
+.success-sparkle.MuiSvgIcon-root {
+    color: #efd39a;
+}
+
+.poster-art {
+    min-height: 360px;
+    background:
+        radial-gradient(ellipse at 50% 86%, rgba(245, 180, 119, 0.35), transparent 42%),
+        #1b142c;
+}
+
+.enchanted-hall {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.poster-art::after {
+    background: linear-gradient(180deg, transparent 53%, rgba(20, 13, 30, 0.38));
+}
+
+.banner-row {
+    right: 9%;
+    bottom: 52px;
+    left: 9%;
+    height: 158px;
+    gap: clamp(12px, 3.4vw, 29px);
+}
+
+.guild-banner {
+    width: clamp(58px, 13%, 82px);
+    height: 150px;
+    flex-basis: 82px;
+    padding-top: 21px;
+    clip-path: polygon(0 0, 100% 0, 100% 94%, 75% 90%, 50% 100%, 25% 90%, 0 94%);
+}
+
+.guild-banner::before {
+    border-color: rgba(255, 224, 172, 0.88);
+    clip-path: polygon(0 0, 100% 0, 100% 93%, 75% 89%, 50% 99%, 25% 89%, 0 93%);
+}
+
+.guild-banner::after {
+    border-color: rgba(255, 224, 172, 0.35);
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 75% 88%, 50% 98%, 25% 88%, 0 92%);
+}
+
+.guild-banner-rose {
+    background: linear-gradient(145deg, #df3948, #861d38);
+}
+
+.guild-banner-violet {
+    background: linear-gradient(145deg, #3478d5, #173b78);
+}
+
+.guild-banner-teal {
+    background: linear-gradient(145deg, #eac34f, #a66c26);
+}
+
+.guild-banner-amber {
+    background: linear-gradient(145deg, #329b79, #175647);
+}
+
+.banner-symbol {
+    width: 100%;
+    height: 95px;
+    gap: 7px;
+    padding: 5px 2px;
+    border: 0;
+    border-radius: 0;
+    filter: drop-shadow(0 1px 6px rgba(255, 224, 172, 0.4));
+}
+
+.banner-symbol svg {
+    width: 40px;
+    height: 40px;
+    fill: rgba(255, 227, 177, 0.12);
+    stroke: #ffe4b2;
+    stroke-width: 1.65;
+}
+
+.banner-symbol > span {
+    color: #fff2d6;
+    font-size: 0.58rem;
+    letter-spacing: 0.11em;
+}
+
+.poster-art-caption {
+    bottom: 17px;
+    color: #f1d59d;
+    letter-spacing: 0.16em;
+}
+
+.poster-art-caption i {
+    background: #d4a961;
+}
+
+.poster-story {
+    border-top-color: rgba(221, 175, 106, 0.68);
+    background:
+        radial-gradient(ellipse at 50% 0, rgba(112, 62, 100, 0.38), transparent 55%),
+        linear-gradient(145deg, #21152f, #171327 64%, #25172b);
+}
+
+.poster-overline.MuiTypography-root {
+    color: #e1bf80;
+}
+
+.poster-story h1.MuiTypography-root {
+    color: #f0d7a1;
+    text-shadow: 0 2px 22px rgba(225, 175, 100, 0.26);
+}
+
+.poster-story h1 span {
+    color: #fff0d6;
+}
+
+.poster-copy.MuiTypography-root {
+    color: #dfd1ca;
+}
+
+.poster-action.MuiButton-root {
+    border-color: #f2d89e;
+    color: #39233d;
+    background: linear-gradient(145deg, #f8e6b7, #d5ab68);
+}
+
+.poster-action.MuiButton-root:hover {
+    border-color: #fff2d2;
+    color: #39233d;
+    background: linear-gradient(145deg, #fff0cb, #e4be7a);
+}
+
+.poster-note.MuiTypography-root {
+    color: #d4bc8e;
+}
+
+.candle-flames {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: candleFlicker 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes candleFlicker {
+    from {
+        opacity: 0.75;
+        transform: scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.06);
+    }
+}
+
+@media (max-width: 540px) {
+    .poster-art {
+        min-height: clamp(305px, 82vw, 360px);
+    }
+
+    .banner-row {
+        right: 4%;
+        bottom: 43px;
+        left: 4%;
+        height: 139px;
+        gap: clamp(5px, 2vw, 10px);
+    }
+
+    .guild-banner {
+        width: clamp(54px, 19%, 76px);
+        height: 130px;
+        flex-basis: clamp(54px, 19%, 76px);
+        padding-top: 13px;
+    }
+
+    .banner-symbol {
+        height: 91px;
+        gap: 6px;
+    }
+
+    .banner-symbol svg {
+        width: 34px;
+        height: 34px;
+    }
+
+    .banner-symbol > span {
+        font-size: clamp(0.5rem, 2.4vw, 0.6rem);
+        letter-spacing: 0.06em;
+    }
+
+    .poster-art-caption {
+        right: 3%;
+        bottom: 12px;
+        left: 3%;
+        gap: 7px;
+        font-size: clamp(0.53rem, 2.4vw, 0.66rem);
+    }
+}
+
+@media (max-width: 360px) {
+    .banner-row {
+        right: 3%;
+        left: 3%;
+        gap: 4px;
+    }
+
+    .guild-banner {
+        width: 22%;
+        flex-basis: 22%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .candle-flames {
+        animation: none;
+    }
+}
+
+.invitation-card:not(.invitation-cover).magic-frame.MuiCard-root {
+    color: #f7eedc;
+    background:
+        radial-gradient(ellipse at 50% 0, rgba(89, 61, 111, 0.3), transparent 58%),
+        linear-gradient(145deg, rgba(24, 22, 43, 0.94), rgba(17, 18, 35, 0.91));
+    box-shadow:
+        0 28px 84px rgba(0, 0, 0, 0.46),
+        inset 0 0 54px rgba(142, 107, 151, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+.invitation-card:not(.invitation-cover) .card-content {
+    background:
+        radial-gradient(1px 1px at 12% 19%, rgba(245, 220, 166, 0.2) 99%, transparent),
+        radial-gradient(1px 1px at 84% 73%, rgba(245, 220, 166, 0.17) 99%, transparent);
+    background-size: 41px 43px, 53px 47px;
+}
+
+.step-content h1.MuiTypography-root {
+    color: #fff3d8;
+    text-shadow: 0 2px 20px rgba(204, 165, 104, 0.16);
+}
+
+.step-content > .MuiTypography-root,
+.step-content .intro-copy,
+.invitation-card .MuiTypography-colorTextSecondary {
+    color: #d3cad6;
+}
+
+.step-kicker,
+.step-kicker .MuiSvgIcon-root {
+    color: #e6c982;
+}
+
+.step-kicker .MuiTypography-root,
+.step-label {
+    color: #d8c49c;
+}
+
+.invitation-card .MuiOutlinedInput-root {
+    color: #fff5e3;
+    background: rgba(255, 255, 255, 0.055);
+    backdrop-filter: blur(5px);
+}
+
+.invitation-card .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(227, 197, 138, 0.48);
+}
+
+.invitation-card .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline,
+.invitation-card .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #d9b866;
+}
+
+.invitation-card .MuiInputLabel-root,
+.invitation-card .MuiFormHelperText-root {
+    color: #d1bd98;
+}
+
+.invitation-card input[type="date"] {
+    color-scheme: dark;
+}
+
+.selection-chip.MuiChip-root {
+    align-self: flex-start;
+    border: 1px solid rgba(226, 196, 137, 0.34);
+    color: #f0dda9;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.selection-chip .MuiChip-icon {
+    color: #e2c47d;
+}
+
+.choice-card.MuiCard-root {
+    border-color: rgba(220, 194, 144, 0.38);
+    background: rgba(255, 255, 255, 0.055);
+    backdrop-filter: blur(6px);
+}
+
+.choice-card.MuiCard-root:hover {
+    border-color: #dbb96e;
+    background: rgba(127, 95, 137, 0.22);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+}
+
+.choice-card.selected.MuiCard-root {
+    border-color: #c7a2dc;
+    background: rgba(126, 87, 153, 0.27);
+    box-shadow:
+        0 0 0 2px rgba(208, 178, 226, 0.24),
+        inset 0 0 26px rgba(173, 132, 196, 0.12);
+}
+
+.choice-emoji {
+    border-color: rgba(231, 207, 159, 0.3);
+    background: rgba(211, 176, 113, 0.13);
+}
+
+.choice-title.MuiTypography-root {
+    color: #fff0cf;
+}
+
+.choice-action .MuiTypography-colorTextSecondary {
+    color: #d0c4d2;
+}
+
+.choice-card .MuiCardActionArea-focusHighlight {
+    background: rgba(234, 212, 171, 0.08);
+}
+
+.progress-area .MuiLinearProgress-root {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.progress-area .MuiLinearProgress-bar {
+    background: linear-gradient(90deg, #7775ff, #ac86d8, #e6c16f);
+}
+
+.step-actions .MuiButton-text {
+    color: #e7d8b7;
+}
+
+.step-actions .MuiButton-text:hover {
+    background: rgba(231, 211, 170, 0.1);
+}
+
+.primary-action.MuiButton-root,
+.step-actions .MuiButton-contained,
+.share-action.MuiButton-root {
+    border-color: #6966ff;
+    color: #fff;
+    background: linear-gradient(135deg, #625eff, #4841d7);
+    box-shadow:
+        0 8px 26px rgba(70, 63, 206, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.primary-action.MuiButton-root:hover,
+.step-actions .MuiButton-contained:hover,
+.share-action.MuiButton-root:hover {
+    border-color: #a7a4ff;
+    color: #fff;
+    background: linear-gradient(135deg, #7975ff, #5c55e6);
+    box-shadow: 0 9px 28px rgba(88, 81, 225, 0.4);
+}
+
+.step-actions .MuiButton-contained.Mui-disabled {
+    border-color: rgba(217, 204, 169, 0.2);
+    color: rgba(243, 231, 205, 0.62);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+}
+
+.invitation-card .MuiAlert-root {
+    border: 1px solid rgba(231, 195, 130, 0.3);
+    color: #f4e8d0;
+    background: rgba(119, 87, 112, 0.25);
+}
+
+.thank-you-card .success-seal {
+    color: #ead194;
+    background:
+        radial-gradient(circle, rgba(53, 38, 67, 0.96) 0 45%, transparent 46%),
+        rgba(198, 161, 98, 0.16);
+}
+
+.thank-you-card .success-seal > svg {
+    color: #efd18d;
+}
+
+.thank-you-card .intro-copy {
+    color: #ded2dc;
+}
+
+.thank-you-card .date-summary {
+    border-color: rgba(225, 193, 132, 0.36);
+    background: rgba(255, 255, 255, 0.055);
+}
+
+.thank-you-card .summary-icon {
+    border-color: rgba(225, 193, 132, 0.3);
+    color: #efd18d;
+    background: rgba(207, 166, 95, 0.12);
+}
+
+.thank-you-card .date-summary .MuiTypography-root {
+    color: #e8dfd3;
+}
+
+.thank-you-card .summary-value.MuiTypography-root {
+    color: #fff0ce;
+}
+
+.thank-you-card .print-action.MuiButton-root {
+    border-color: rgba(226, 198, 146, 0.56);
+    color: #f0dfbd;
+}
+
+.thank-you-card .quiet-note.MuiTypography-root {
+    color: #cfc0d2;
+}
+
+.thank-you-card .MuiAlert-root {
+    color: #f4e8d0;
+    background: rgba(119, 87, 112, 0.25);
+}
+
+.page-footer {
+    color: #d4c398;
+}
+
+@media (max-width: 540px) {
+    .invitation-card:not(.invitation-cover).magic-frame.MuiCard-root {
+        background:
+            radial-gradient(ellipse at 50% 0, rgba(89, 61, 111, 0.27), transparent 58%),
+            rgba(18, 18, 35, 0.95);
+    }
+}
+
+:root {
+    font-family: "Palatino Linotype", "Book Antiqua", "Baskerville", Georgia, serif;
+    color: #fff2d6;
+}
+
+.invitation-card:not(.invitation-cover) .MuiTypography-root {
+    color: #e4dbe8;
+}
+
+.invitation-card:not(.invitation-cover) .MuiTypography-h1,
+.invitation-card:not(.invitation-cover) .MuiTypography-h2,
+.invitation-card:not(.invitation-cover) .MuiTypography-h3,
+.invitation-card:not(.invitation-cover) .MuiTypography-h4,
+.invitation-card:not(.invitation-cover) .MuiTypography-h5,
+.invitation-card:not(.invitation-cover) .MuiTypography-h6,
+.invitation-card:not(.invitation-cover) .MuiTypography-subtitle1 {
+    color: #fff0cf;
+    font-family: "Palatino Linotype", "Book Antiqua", "Baskerville", Georgia, serif;
+    text-shadow: 0 1px 14px rgba(230, 195, 131, 0.12);
+}
+
+.invitation-card:not(.invitation-cover) .MuiTypography-colorTextSecondary {
+    color: #e4dbe8 !important;
+}
+
+.invitation-card:not(.invitation-cover) .step-kicker .MuiTypography-root {
+    color: #e6c982;
+}
+
+.invitation-card:not(.invitation-cover) .MuiFormLabel-root,
+.invitation-card:not(.invitation-cover) .MuiFormHelperText-root,
+.invitation-card:not(.invitation-cover) .MuiInputLabel-root {
+    color: #d7c8df;
+}
+
+.choice-card .choice-action .MuiTypography-root:not(.choice-title) {
+    color: #ded3e4 !important;
+}
+
+.step-content {
+    animation: arrive 520ms cubic-bezier(0.2, 0.75, 0.25, 1) both, spellGlow 6s ease-in-out infinite;
+}
+
+.invitation-page::before,
+.invitation-page::after {
+    color: rgba(255, 224, 159, 0.75);
+    text-shadow:
+        0 0 9px rgba(255, 219, 148, 0.55),
+        0 0 25px rgba(198, 139, 232, 0.4);
+}
+
+.invitation-page::before {
+    animation: twinkle 3s ease-in-out infinite, sparkleDrift 8s ease-in-out infinite;
+}
+
+.invitation-page::after {
+    animation: twinkle 4s ease-in-out infinite reverse, sparkleDrift 10s ease-in-out infinite reverse;
+}
+
+.invitation-card:not(.invitation-cover)::after {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #9d7bab 22%, #f0d38c 50%, #9d7bab 78%, transparent);
+    box-shadow: 0 0 16px rgba(233, 201, 140, 0.52);
+    animation: borderGleam 5s ease-in-out infinite;
+}
+
+.invitation-card:not(.invitation-cover).magic-frame.MuiCard-root {
+    animation: cardAura 7s ease-in-out infinite;
+}
+
+.enchanted-hall {
+    transform-origin: 50% 75%;
+    animation: hallBreath 11s ease-in-out infinite;
+}
+
+.candle-flames {
+    transform-origin: center bottom;
+    animation: candleFlicker 1.8s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 7px rgba(255, 202, 115, 0.58));
+}
+
+.banner-symbol {
+    animation: sigilGlow 2.4s ease-in-out infinite;
+}
+
+.poster-story h1.MuiTypography-root {
+    animation: titleGleam 5s ease-in-out infinite;
+}
+
+@keyframes sparkleDrift {
+    0%,
+    100% {
+        translate: 0 0;
+        rotate: -7deg;
+    }
+
+    50% {
+        translate: 0 -18px;
+        rotate: 12deg;
+    }
+}
+
+@keyframes borderGleam {
+    0%,
+    100% {
+        opacity: 0.55;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes cardAura {
+    0%,
+    100% {
+        box-shadow:
+            0 28px 84px rgba(0, 0, 0, 0.46),
+            inset 0 0 54px rgba(142, 107, 151, 0.08);
+    }
+
+    50% {
+        box-shadow:
+            0 28px 84px rgba(0, 0, 0, 0.46),
+            0 0 42px rgba(161, 121, 189, 0.2),
+            inset 0 0 60px rgba(142, 107, 151, 0.14);
+    }
+}
+
+@keyframes hallBreath {
+    0%,
+    100% {
+        transform: scale(1);
+        filter: saturate(0.95);
+    }
+
+    50% {
+        transform: scale(1.025);
+        filter: saturate(1.12);
+    }
+}
+
+@keyframes spellGlow {
+    0%,
+    100% {
+        filter: drop-shadow(0 0 0 rgba(206, 166, 255, 0));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 7px rgba(206, 166, 255, 0.11));
+    }
+}
+
+@keyframes titleGleam {
+    0%,
+    100% {
+        text-shadow: 0 2px 22px rgba(225, 175, 100, 0.18);
+    }
+
+    50% {
+        text-shadow:
+            0 2px 25px rgba(255, 225, 166, 0.42),
+            0 0 42px rgba(195, 132, 218, 0.2);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .step-content,
+    .invitation-page::before,
+    .invitation-page::after,
+    .invitation-card:not(.invitation-cover)::after,
+    .invitation-card:not(.invitation-cover).magic-frame.MuiCard-root,
+    .enchanted-hall,
+    .candle-flames,
+    .banner-symbol,
+    .poster-story h1.MuiTypography-root {
         animation: none;
     }
 }

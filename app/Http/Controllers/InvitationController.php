@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Invitation;
+use App\Services\InvitationStore;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -13,20 +14,30 @@ class InvitationController extends Controller
 {
     public function show(): Response
     {
+        $cities = config('invitacion.ciudades');
+
+        foreach ($cities as &$city) {
+            $city['lugares']['otro'] = [
+                'nombre' => 'Otro lugar',
+                'detalle' => 'Escribe el lugar que tienes en mente.',
+                'emoji' => '✨',
+            ];
+        }
+        unset($city);
+
         return Inertia::render('Invitacion', [
-            'cities' => config('invitacion.ciudades'),
+            'cities' => $cities,
             'recipientName' => config('invitacion.destinataria'),
             'blockedDates' => config('invitacion.fechas_bloqueadas'),
         ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request, InvitationStore $invitations): RedirectResponse
     {
         $cities = config('invitacion.ciudades');
-        $city = $request->input('ciudad');
-        $venueIds = is_string($city)
-            ? array_keys($cities[$city]['lugares'] ?? [])
-            : [];
+        $cityId = $request->input('ciudad');
+        $city = is_string($cityId) ? ($cities[$cityId] ?? null) : null;
+        $venueIds = [...array_keys($city['lugares'] ?? []), 'otro'];
 
         $validated = $request->validate([
             'fecha' => [
@@ -35,7 +46,7 @@ class InvitationController extends Controller
                 'after_or_equal:tomorrow',
                 Rule::notIn(config('invitacion.fechas_bloqueadas')),
             ],
-            'ciudad' => ['required', Rule::in(array_keys($cities))],
+            'ciudad' => ['required', 'string', Rule::in(array_keys($cities))],
             'lugar' => ['required', 'string', Rule::in($venueIds)],
             'lugar_personalizado' => [
                 Rule::excludeIf($request->input('lugar') !== 'otro'),
@@ -50,34 +61,48 @@ class InvitationController extends Controller
             'lugar_personalizado.max' => 'El nombre del lugar no puede superar los 120 caracteres.',
         ]);
 
-        $invitation = Invitation::create([
+        $city = $cities[$validated['ciudad']];
+        $venueName = $validated['lugar'] === 'otro'
+            ? $validated['lugar_personalizado']
+            : ($city['lugares'][$validated['lugar']]['nombre'] ?? null);
+
+        if ($venueName === null) {
+            abort(422, 'El lugar seleccionado ya no está disponible.');
+        }
+
+        $invitationId = $invitations->store([
             'fecha' => $validated['fecha'],
             'ciudad' => $validated['ciudad'],
             'lugar' => $validated['lugar'],
+            'ciudad_nombre' => $city['nombre'],
+            'lugar_nombre' => $venueName,
             'lugar_personalizado' => $validated['lugar_personalizado'] ?? null,
         ]);
 
-        return redirect()->route('invitacion.gracias', $invitation);
+        return redirect()->route('invitacion.gracias', $invitationId);
     }
 
-    public function thanks(Invitation $invitation): Response
+    public function thanks(string $invitation, InvitationStore $invitations): Response
     {
-        $city = config("invitacion.ciudades.{$invitation->ciudad}");
-        $venueName = $invitation->lugar_personalizado
-            ?: ($city['lugares'][$invitation->lugar]['nombre'] ?? $invitation->lugar);
+        $savedInvitation = $invitations->find($invitation);
+        $venueName = $savedInvitation['lugar_personalizado']
+            ?: $savedInvitation['lugar_nombre'];
+        $cityName = $savedInvitation['ciudad_nombre'];
         $recipientName = config('invitacion.destinataria');
-        $formattedDate = $invitation->fecha->locale('es')->isoFormat('dddd D [de] MMMM [de] YYYY');
+        $formattedDate = Carbon::parse($savedInvitation['fecha'])
+            ->locale('es')
+            ->isoFormat('dddd D [de] MMMM [de] YYYY');
         $shareText = implode("\n", [
             "¡Hola! {$recipientName} eligió una cita:",
             "Fecha: {$formattedDate}",
-            "Ciudad: {$city['nombre']}",
+            "Ciudad: {$cityName}",
             "Lugar: {$venueName}",
         ]);
 
         return Inertia::render('Gracias', [
             'invitation' => [
                 'fecha' => $formattedDate,
-                'ciudad' => $city['nombre'],
+                'ciudad' => $cityName,
                 'lugar' => $venueName,
             ],
             'recipientName' => $recipientName,

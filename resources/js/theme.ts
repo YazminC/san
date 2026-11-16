@@ -2,42 +2,54 @@ import { createTheme } from '@mui/material/styles';
 
 export const theme = createTheme({
     palette: {
-        mode: 'light',
+        mode: 'dark',
         primary: {
-            main: '#753d48',
-            dark: '#58303b',
-            light: '#a45d68',
+            main: '#704061',
+            dark: '#4d2a4d',
+            light: '#a66b83',
         },
         secondary: {
-            main: '#967638',
+            main: '#a77a3f',
         },
         background: {
-            default: '#111827',
-            paper: '#f6efdf',
+            default: '#100e22',
+            paper: '#21182e',
         },
         text: {
-            primary: '#372b27',
-            secondary: '#75645a',
+            primary: '#fff2d6',
+            secondary: '#ded3e4',
         },
     },
     shape: {
         borderRadius: 12,
     },
     typography: {
-        fontFamily: '"Avenir Next", Avenir, "Segoe UI", sans-serif',
+        fontFamily: '"Palatino Linotype", "Book Antiqua", "Baskerville", Georgia, serif',
         h1: {
-            fontFamily: '"Palatino Linotype", "Book Antiqua", Georgia, serif',
-            fontWeight: 500,
-            letterSpacing: '-0.045em',
+            fontFamily: '"Palatino Linotype", "Book Antiqua", "Baskerville", Georgia, serif',
+            fontWeight: 600,
+            letterSpacing: '-0.025em',
         },
         h2: {
-            fontFamily: '"Palatino Linotype", "Book Antiqua", Georgia, serif',
-            fontWeight: 500,
-            letterSpacing: '-0.035em',
+            fontFamily: '"Palatino Linotype", "Book Antiqua", "Baskerville", Georgia, serif',
+            fontWeight: 600,
+            letterSpacing: '-0.02em',
         },
         h3: {
-            fontFamily: '"Palatino Linotype", "Book Antiqua", Georgia, serif',
-            fontWeight: 500,
+            fontFamily: '"Palatino Linotype", "Book Antiqua", "Baskerville", Georgia, serif',
+            fontWeight: 600,
+        },
+        h4: {
+            fontFamily: '"Palatino Linotype", "Book Antiqua", "Baskerville", Georgia, serif',
+            fontWeight: 600,
+        },
+        h5: {
+            fontFamily: '"Palatino Linotype", "Book Antiqua", "Baskerville", Georgia, serif',
+            fontWeight: 600,
+        },
+        h6: {
+            fontFamily: '"Palatino Linotype", "Book Antiqua", "Baskerville", Georgia, serif',
+            fontWeight: 600,
         },
         button: {
             fontWeight: 600,
