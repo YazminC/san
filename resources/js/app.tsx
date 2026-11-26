@@ -1,6 +1,7 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { createInertiaApp } from '@inertiajs/react';
 import type { ReactNode } from 'react';
+import BackgroundMusic from './components/BackgroundMusic';
 import { theme } from './theme';
 import '../css/app.css';
 
@@ -15,6 +16,7 @@ createInertiaApp({
         <ThemeProvider theme={theme}>
             <CssBaseline />
             {app}
+            <BackgroundMusic />
         </ThemeProvider>
     ),
 });

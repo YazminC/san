@@ -4,6 +4,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import invitationData from '../data/invitacion.json';
 import Gracias from './pages/Gracias';
 import Invitacion from './pages/Invitacion';
+import BackgroundMusic from './components/BackgroundMusic';
 import { theme } from './theme';
 import '../css/app.css';
 
@@ -113,6 +114,7 @@ createRoot(rootElement).render(
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <StaticApp />
+            <BackgroundMusic />
         </ThemeProvider>
     </StrictMode>,
 );
