@@ -11,6 +11,7 @@ type Venue = {
     nombre: string;
     detalle: string;
     emoji: string;
+    ubicacion?: string;
 };
 
 type City = {

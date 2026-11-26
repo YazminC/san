@@ -24,6 +24,7 @@ type Venue = {
     nombre: string;
     detalle: string;
     emoji: string;
+    ubicacion?: string;
 };
 
 type City = {
@@ -259,6 +260,7 @@ export default function Invitacion({
                                                 emoji={venue.emoji}
                                                 title={venue.nombre}
                                                 description={venue.detalle}
+                                                locationUrl={venue.ubicacion}
                                                 onClick={() => {
                                                     form.clearErrors('lugar_personalizado');
                                                     form.setData((current) => ({
@@ -501,12 +503,14 @@ function ChoiceCard({
     emoji,
     title,
     description,
+    locationUrl,
     onClick,
 }: {
     selected: boolean;
     emoji: string;
     title: string;
     description: string;
+    locationUrl?: string;
     onClick: () => void;
 }) {
     return (
@@ -524,6 +528,20 @@ function ChoiceCard({
                     {description}
                 </Typography>
             </CardActionArea>
+            {locationUrl && (
+                <Button
+                    component="a"
+                    href={locationUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    size="small"
+                    variant="text"
+                    startIcon={<LocationOnRounded />}
+                    className="location-link"
+                >
+                    Ver ubicación
+                </Button>
+            )}
         </Card>
     );
 }

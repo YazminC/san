@@ -248,6 +248,17 @@ input {
     font-weight: 650;
 }
 
+.location-link.MuiButton-root {
+    margin: 0 20px 16px;
+    color: #80613d;
+    font-weight: 700;
+    justify-content: flex-start;
+}
+
+.location-link.MuiButton-root:hover {
+    background: rgba(151, 118, 56, 0.08);
+}
+
 .choice-card .MuiCardActionArea-focusHighlight {
     background: rgba(164, 79, 98, 0.04);
 }

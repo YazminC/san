@@ -34,19 +34,28 @@
             "emoji": "🏙️",
             "lugares": {
                 "cosmovitral": {
-                    "nombre": "Paseo por el Cosmovitral",
-                    "detalle": "Colores preciosos, una caminata y cafecito.",
-                    "emoji": "🌷"
+                    "nombre": "Cosmovitral",
+                    "detalle": "Arte, vitrales y un paseo lleno de colores.",
+                    "emoji": "🌷",
+                    "ubicacion": "https://www.google.com/maps/search/?api=1&query=Cosmovitral+Toluca"
                 },
-                "portales": {
-                    "nombre": "Cafecito en Los Portales",
-                    "detalle": "Un antojito, buena plática y paseo por el centro.",
-                    "emoji": "☕"
+                "planetario": {
+                    "nombre": "Planetario",
+                    "detalle": "Estrellas, imaginación y una aventura entre planetas.",
+                    "emoji": "🪐",
+                    "ubicacion": "https://www.google.com/maps/search/?api=1&query=Planetario+Toluca"
                 },
-                "matlatzincas": {
-                    "nombre": "Atardecer en El Calvario",
-                    "detalle": "Un paseíto con vistas bonitas y algo rico después.",
-                    "emoji": "🌇"
+                "expo-espacio": {
+                    "nombre": "Expo del Espacio",
+                    "detalle": "Una cita espacial para descubrir algo nuevo.",
+                    "emoji": "🚀",
+                    "ubicacion": "https://www.google.com/maps/search/?api=1&query=Expo+del+Espacio+Toluca"
+                },
+                "recorcholis": {
+                    "nombre": "Recorcholis",
+                    "detalle": "Juegos, risas y muchas ganas de jugar juntos.",
+                    "emoji": "🎮",
+                    "ubicacion": "https://www.google.com/maps/search/?api=1&query=Recorcholis+Toluca"
                 }
             }
         }

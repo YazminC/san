@@ -27,7 +27,10 @@ class InvitationTest extends TestCase
                 ->where('blockedDates', ['2026-12-17', '2026-12-18'])
                 ->where('cities.cdmx.nombre', 'Ciudad de México')
                 ->where('cities.cdmx.lugares.otro.nombre', 'Otro lugar')
-                ->where('cities.toluca.lugares.cosmovitral.nombre', 'Paseo por el Cosmovitral')
+                ->where('cities.toluca.lugares.cosmovitral.nombre', 'Cosmovitral')
+                ->where('cities.toluca.lugares.planetario.nombre', 'Planetario')
+                ->where('cities.toluca.lugares.expo-espacio.nombre', 'Expo del Espacio')
+                ->where('cities.toluca.lugares.recorcholis.nombre', 'Recorcholis')
             );
     }
 
@@ -52,7 +55,7 @@ class InvitationTest extends TestCase
                 'ciudad' => 'toluca',
                 'lugar' => 'cosmovitral',
                 'ciudad_nombre' => 'Toluca',
-                'lugar_nombre' => 'Paseo por el Cosmovitral',
+                'lugar_nombre' => 'Cosmovitral',
                 'lugar_personalizado' => null,
             ],
             json_decode(Storage::disk('local')->get("invitations/{$invitationId}.json"), true),
@@ -64,9 +67,9 @@ class InvitationTest extends TestCase
                 ->component('Gracias')
                 ->where('recipientName', 'Sandy')
                 ->where('invitation.ciudad', 'Toluca')
-                ->where('invitation.lugar', 'Paseo por el Cosmovitral')
+                ->where('invitation.lugar', 'Cosmovitral')
                 ->where('shareText', fn (string $text) => str_contains($text, 'Ciudad: Toluca')
-                    && str_contains($text, 'Lugar: Paseo por el Cosmovitral'))
+                    && str_contains($text, 'Lugar: Cosmovitral'))
             );
     }
 
