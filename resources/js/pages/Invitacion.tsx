@@ -480,7 +480,7 @@ function StepHeading({
         <Stack spacing={1}>
             <Stack direction="row" spacing={1} className="step-kicker" sx={{ alignItems: 'center' }}>
                 {icon}
-                <Typography variant="overline">{number} · NUESTRA AVENTURA</Typography>
+                <Typography variant="overline">{number} · NUESTRA CITA</Typography>
             </Stack>
             <Typography component="h1" variant="h3">
                 {title}
