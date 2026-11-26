@@ -10,20 +10,35 @@
             "detalle": "Muchos rinconcitos bonitos para una cita.",
             "emoji": "🌆",
             "lugares": {
-                "coyoacan": {
-                    "nombre": "Cafecito en Coyoacán",
-                    "detalle": "Calles bonitas, algo dulce y plática sin prisa.",
-                    "emoji": "☕"
+                "zoologico": {
+                    "nombre": "Zoológico de Chapultepec",
+                    "detalle": "Una caminata encantada llena de animales.",
+                    "emoji": "🐼",
+                    "ubicacion": "https://www.google.com/maps/search/?api=1&query=Zoológico+de+Chapultepec+Ciudad+de+México"
                 },
-                "chapultepec": {
-                    "nombre": "Paseo por Chapultepec",
-                    "detalle": "Un paseíto entre árboles, con helado incluido.",
-                    "emoji": "🌳"
+                "aztlan": {
+                    "nombre": "Aztlán Feria de Chapultepec",
+                    "detalle": "Risas, juegos y luces para una cita increíble.",
+                    "emoji": "🎡",
+                    "ubicacion": "https://www.google.com/maps/search/?api=1&query=Aztlán+Feria+de+Chapultepec+Ciudad+de+México"
                 },
-                "roma": {
-                    "nombre": "Cena en la Roma",
-                    "detalle": "Algo rico, luces bonitas y tiempo para nosotros.",
-                    "emoji": "🍝"
+                "granja": {
+                    "nombre": "Granja las Américas",
+                    "detalle": "Un plan divertido rodeado de animales y naturaleza.",
+                    "emoji": "🐄",
+                    "ubicacion": "https://www.google.com/maps/search/?api=1&query=Granja+las+Américas+Ciudad+de+México"
+                },
+                "barrio-chino": {
+                    "nombre": "Barrio Chino",
+                    "detalle": "Luces, sabores y un paseo lleno de sorpresas.",
+                    "emoji": "🏮",
+                    "ubicacion": "https://www.google.com/maps/search/?api=1&query=Barrio+Chino+Ciudad+de+México"
+                },
+                "recorcholis-forus": {
+                    "nombre": "Recorcholis Forus Buena Vista",
+                    "detalle": "Muchos juegos, risas y tiempo para divertirnos.",
+                    "emoji": "🎮",
+                    "ubicacion": "https://www.google.com/maps/search/?api=1&query=Recorcholis+Forus+Buena+Vista+Ciudad+de+México"
                 }
             }
         },
@@ -41,7 +56,7 @@
                 },
                 "planetario": {
                     "nombre": "Planetario",
-                    "detalle": "Estrellas, imaginación y una aventura entre planetas.",
+                    "detalle": "Estrellas, imaginación y una cita entre planetas.",
                     "emoji": "🪐",
                     "ubicacion": "https://www.google.com/maps/search/?api=1&query=Planetario+Toluca"
                 },

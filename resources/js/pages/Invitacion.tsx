@@ -100,15 +100,10 @@ export default function Invitacion({
 
     return (
         <>
-            {!staticMode && <Head title="Una aventura para dos" />}
+            {!staticMode && <Head title="Una cita para dos" />}
 
             <Box className="invitation-page">
                 <Container maxWidth="sm" className="page-shell">
-                    <Stack className="brand" direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-                        <AutoAwesomeRounded fontSize="small" />
-                        <Typography variant="body2">UN UNIVERSO SOLO NUESTRO</Typography>
-                    </Stack>
-
                     <Card
                         className={`invitation-card magic-frame${step === 0 ? ' invitation-cover' : ''}`}
                         elevation={0}
@@ -117,7 +112,7 @@ export default function Invitacion({
                             <Box className="progress-area">
                                 <LinearProgress variant="determinate" value={progress} />
                                 <Typography variant="caption" className="step-label">
-                                    El mapa nos acerca a nuestra próxima aventura
+                                    El mapa nos acerca a nuestra próxima cita
                                 </Typography>
                             </Box>
                         )}
@@ -132,12 +127,12 @@ export default function Invitacion({
                                         sx={{ alignItems: 'center' }}
                                     >
                                         <Typography className="poster-overline" variant="overline">
-                                            UNA CARTA DE INVITACIÓN
+                                            UNA INVITACIÓN PARA LA MÁS PRECIOSA
                                         </Typography>
                                         <Typography component="h1" variant="h2" align="center">
                                             <span className="poster-recipient-intro">Oye,</span>
                                             <span className="poster-name">{recipientName}</span>
-                                            <span className="poster-title-subtitle">una aventura nos espera</span>
+                                            <span className="poster-title-subtitle">una cita nos espera</span>
                                         </Typography>
                                         <Typography className="poster-copy" align="center">
                                             Preparé un pequeño mapa mágico para elegir el día, el lugar y
@@ -150,11 +145,8 @@ export default function Invitacion({
                                             onClick={() => setStep(1)}
                                             className="primary-action poster-action"
                                         >
-                                            ¡Acepto esta aventura!
+                                            ¡Acepto esta cita!
                                         </Button>
-                                        <Typography variant="caption" className="poster-note">
-                                            UNA NOCHE ESTRELLADA · UNA HISTORIA PARA DOS
-                                        </Typography>
                                     </Stack>
                                 </Box>
                             )}
@@ -164,14 +156,14 @@ export default function Invitacion({
                                     <StepHeading
                                         number="01"
                                         icon={<CalendarMonthRounded />}
-                                        title="¿Qué día empieza la aventura?"
+                                        title="¿Qué día es nuestra cita?"
                                         description="Elige la fecha que te haga ilusión; el resto lo preparo yo."
                                     />
                                     <TextField
                                         fullWidth
                                         required
                                         type="date"
-                                        label="Día de nuestra aventura"
+                                        label="Día de nuestra cita"
                                         value={form.data.fecha}
                                         onChange={(event) => updateDate(event.target.value)}
                                         slotProps={{
@@ -210,7 +202,7 @@ export default function Invitacion({
                                     <StepHeading
                                         number="02 · EL MAPA"
                                         icon={<LocationOnRounded />}
-                                        title="¿Dónde empieza la aventura?"
+                                        title="¿Dónde empieza nuestra cita?"
                                         description="Escoge la ciudad que más te ilusione."
                                     />
                                     <Box className="choice-grid city-grid">
@@ -431,7 +423,7 @@ function MagicalPosterArt() {
                 </g>
             </svg>
 
-            <Box className="banner-row" aria-label="Cuatro detalles de nuestra aventura">
+            <Box className="banner-row" aria-label="Cuatro detalles de nuestra cita">
                 {banners.map((banner) => (
                     <Box
                         key={banner.color}
@@ -465,9 +457,9 @@ function MagicalPosterArt() {
                 ))}
             </Box>
             <Box className="poster-art-caption">
-                <span>UN UNIVERSO</span>
+                <span>UNA CITA</span>
                 <i />
-                <span>HECHO PARA NOSOTROS</span>
+                <span>PARA NOSOTRAS</span>
             </Box>
         </Box>
     );

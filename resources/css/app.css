@@ -259,6 +259,11 @@ input {
     background: rgba(151, 118, 56, 0.08);
 }
 
+.location-link.MuiButton-root,
+.location-link.MuiButton-root .MuiSvgIcon-root {
+    color: #fff;
+}
+
 .choice-card .MuiCardActionArea-focusHighlight {
     background: rgba(164, 79, 98, 0.04);
 }
@@ -760,7 +765,8 @@ body,
 }
 
 .poster-story h1 .poster-recipient-intro {
-    margin-bottom: 4px;
+    margin-top: -8px;
+    margin-bottom: 0;
     color: #e8d8b7;
     font-family: "Palatino Linotype", "Book Antiqua", "Baskerville", Georgia, serif;
     font-size: clamp(1.05rem, 3.8vw, 1.4rem);
@@ -2368,7 +2374,74 @@ body,
     .enchanted-hall,
     .candle-flames,
     .banner-symbol,
-    .poster-story h1.MuiTypography-root {
+    .poster-story h1.MuiTypography-root,
+    .poster-story::before,
+    .poster-story::after {
         animation: none;
+    }
+}
+
+.poster-story {
+    overflow: hidden;
+}
+
+.poster-story::before,
+.poster-story::after {
+    position: absolute;
+    z-index: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ffe8ad;
+    box-shadow:
+        42px 18px 0 #dca8ff,
+        92px -14px 0 #f6d58c,
+        148px 28px 0 #ffe8ad,
+        214px -8px 0 #dca8ff,
+        280px 20px 0 #f6d58c,
+        -38px 72px 0 #f6d58c,
+        54px 118px 0 #ffe8ad,
+        176px 96px 0 #dca8ff,
+        258px 132px 0 #ffe8ad;
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+    animation: magicDust 5.5s ease-in-out infinite;
+}
+
+.poster-story::before {
+    top: 22%;
+    left: 12%;
+}
+
+.poster-story::after {
+    top: 48%;
+    right: 34%;
+    animation-delay: -2.7s;
+    transform: scale(0.7);
+}
+
+.poster-story > * {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes magicDust {
+    0%,
+    100% {
+        opacity: 0;
+        translate: 0 16px;
+        filter: drop-shadow(0 0 0 rgba(255, 222, 153, 0));
+    }
+
+    35% {
+        opacity: 0.85;
+        translate: 0 -4px;
+        filter: drop-shadow(0 0 8px rgba(255, 222, 153, 0.8));
+    }
+
+    65% {
+        opacity: 0.45;
+        translate: 10px -18px;
     }
 }

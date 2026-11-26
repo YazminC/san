@@ -27,6 +27,11 @@ class InvitationTest extends TestCase
                 ->where('blockedDates', ['2026-12-17', '2026-12-18'])
                 ->where('cities.cdmx.nombre', 'Ciudad de México')
                 ->where('cities.cdmx.lugares.otro.nombre', 'Otro lugar')
+                ->where('cities.cdmx.lugares.zoologico.nombre', 'Zoológico de Chapultepec')
+                ->where('cities.cdmx.lugares.aztlan.nombre', 'Aztlán Feria de Chapultepec')
+                ->where('cities.cdmx.lugares.granja.nombre', 'Granja las Américas')
+                ->where('cities.cdmx.lugares.barrio-chino.nombre', 'Barrio Chino')
+                ->where('cities.cdmx.lugares.recorcholis-forus.nombre', 'Recorcholis Forus Buena Vista')
                 ->where('cities.toluca.lugares.cosmovitral.nombre', 'Cosmovitral')
                 ->where('cities.toluca.lugares.planetario.nombre', 'Planetario')
                 ->where('cities.toluca.lugares.expo-espacio.nombre', 'Expo del Espacio')
@@ -150,7 +155,7 @@ class InvitationTest extends TestCase
             ->post(route('invitacion.store'), [
                 'fecha' => now()->addDay()->toDateString(),
                 'ciudad' => 'puebla',
-                'lugar' => 'chapultepec',
+                'lugar' => 'zoologico',
             ])
             ->assertSessionHasErrors(['ciudad', 'lugar']);
 
@@ -166,7 +171,7 @@ class InvitationTest extends TestCase
             ->post(route('invitacion.store'), [
                 'fecha' => '2026-11-07',
                 'ciudad' => 'cdmx',
-                'lugar' => 'coyoacan',
+                'lugar' => 'zoologico',
             ])
             ->assertSessionHasErrors('fecha');
 
@@ -183,7 +188,7 @@ class InvitationTest extends TestCase
             ->post(route('invitacion.store'), [
                 'fecha' => $date,
                 'ciudad' => 'cdmx',
-                'lugar' => 'coyoacan',
+                'lugar' => 'zoologico',
             ])
             ->assertSessionHasErrors([
                 'fecha' => 'La fecha seleccionada no está disponible. Elige otra fecha.',

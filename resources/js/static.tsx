@@ -80,8 +80,8 @@ function StaticApp() {
 
     useEffect(() => {
         document.title = hasInvitation
-            ? '¡Una nueva aventura nos espera! · Una cita contigo'
-            : 'Una aventura para dos · Una cita contigo';
+            ? '¡Una nueva cita nos espera! · Una cita contigo'
+            : 'Una cita para dos · Una cita contigo';
     }, [hasInvitation]);
 
     return hasInvitation && invitation ? (

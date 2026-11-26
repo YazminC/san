@@ -75,15 +75,10 @@ export default function Gracias({
 
     return (
         <>
-            {!staticMode && <Head title="¡Una nueva aventura nos espera!" />}
+            {!staticMode && <Head title="¡Una nueva cita nos espera!" />}
 
             <Box className="invitation-page">
                 <Container maxWidth="sm" className="page-shell">
-                    <Stack className="brand" direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-                        <AutoAwesomeRounded fontSize="small" />
-                        <Typography variant="body2">UN UNIVERSO SOLO NUESTRO</Typography>
-                    </Stack>
-
                     <Card className="invitation-card magic-frame thank-you-card" elevation={0}>
                         <Stack className="card-content step-content" spacing={2.5} sx={{ alignItems: 'center' }}>
                             <Box className="arcane-seal success-seal" aria-hidden="true">
@@ -93,11 +88,10 @@ export default function Gracias({
                             </Box>
                             <AutoAwesomeRounded className="success-sparkle" />
                             <Typography component="h1" variant="h2" align="center">
-                                ¡Una nueva aventura nos espera!
+                                ¡Una nueva cita nos espera!
                             </Typography>
                             <Typography className="intro-copy" align="center">
-                                Gracias por aceptar, {recipientName}. Ya estoy contando los días para compartir
-                                un recuerdo encantador contigo.
+                                Gracias por aceptar, {recipientName}. Contaré los días para verte.
                             </Typography>
 
                             <Box className="date-summary">
