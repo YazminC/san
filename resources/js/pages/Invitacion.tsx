@@ -126,11 +126,8 @@ export default function Invitacion({
                                         spacing={2}
                                         sx={{ alignItems: 'center' }}
                                     >
-                                        <Typography className="poster-overline" variant="overline">
-                                            UNA INVITACIÓN PARA LA MÁS PRECIOSA
-                                        </Typography>
                                         <Typography component="h1" variant="h2" align="center">
-                                            <span className="poster-recipient-intro">Oye,</span>
+                                            <span className="poster-recipient-intro">Oye Preciosa</span>
                                             <span className="poster-name">{recipientName}</span>
                                             <span className="poster-title-subtitle">una cita nos espera</span>
                                         </Typography>
@@ -242,7 +239,7 @@ export default function Invitacion({
                                         number="03"
                                         icon={<AutoAwesomeRounded />}
                                         title="Elige nuestro plan especial"
-                                        description={`Cuatro opciones encantadoras para ${selectedCity.nombre}.`}
+                                        description={`Opciones encantadoras para ${selectedCity.nombre}.`}
                                     />
                                     <Box className="choice-grid venue-grid">
                                         {Object.entries(selectedCity.lugares).map(([id, venue]) => (

@@ -14,6 +14,7 @@ import AutoAwesomeRounded from '@mui/icons-material/AutoAwesomeRounded';
 import CalendarMonthRounded from '@mui/icons-material/CalendarMonthRounded';
 import LocationOnRounded from '@mui/icons-material/LocationOnRounded';
 import ShareRounded from '@mui/icons-material/ShareRounded';
+import ArrowBackRounded from '@mui/icons-material/ArrowBackRounded';
 import type { ReactNode } from 'react';
 
 type Props = {
@@ -117,16 +118,15 @@ export default function Gracias({
                             </Button>
                             <Button
                                 variant="outlined"
-                                startIcon={<AutoAwesomeRounded />}
-                                onClick={() => window.print()}
-                                className="print-action"
+                                startIcon={<ArrowBackRounded />}
+                                onClick={() => {
+                                    const baseUrl = import.meta.env.BASE_URL;
+                                    window.location.assign(staticMode ? `${baseUrl}` : '/');
+                                }}
+                                className="print-action return-action"
                             >
-                                Guardar nuestra invitación
+                                Regresar al inicio
                             </Button>
-                            <Typography variant="caption" className="quiet-note">
-                                En tu celular podrás elegir una app. Si Instagram no aparece, copia los detalles
-                                y pégalos en el chat.
-                            </Typography>
                             {shareStatus && (
                                 <Alert severity="success" role="status">{shareStatus}</Alert>
                             )}
